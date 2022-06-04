@@ -10,8 +10,11 @@
  * Text Domain: BigExpress
  */
 
+//Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
+defined('ABSPATH') or die( "Bye bye" );
+
 define('RAI_RUTA',plugin_dir_path(__FILE__));
-define('RAI_NOMBRE','Big Store');
+
 
 // Archivos Externos
 

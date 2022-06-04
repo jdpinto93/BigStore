@@ -65,6 +65,7 @@ class InformacionDeLaBodegaMetaBox{
                     'type' => 'tel',
                 )
 
+
 	);
 
 	public function __construct() {

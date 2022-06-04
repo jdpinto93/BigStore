@@ -1,11 +1,4 @@
 <?php
-
-if ( ! defined( 'WPINC' ) ) {
- 
-    die;
- 
-}
- 
 /*
  * Check if WooCommerce is active
  */
