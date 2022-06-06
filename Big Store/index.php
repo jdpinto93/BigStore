@@ -28,7 +28,11 @@ include(RAI_RUTA.'/Bodegas/campos-bodegas.php');
 include(RAI_RUTA.'/envios/envios.php');
 
 //Crea campos para los productos de woocommerce
-include(RAI_RUTA.'/productos/campos-productos.php');
+include(RAI_RUTA.'/wooCambios/campos-productos.php');
 
 // Registra la taxonomia "marca" a los productos de woocommerce
-include(RAI_RUTA.'/productos/pwb-brand.php');
+include(RAI_RUTA.'/wooCambios/pwb-brand.php');
+
+// Registra los cambios en la modalidad de correos de woocommerce
+include(RAI_RUTA.'/wooCambios/emails-woo.php');
+
