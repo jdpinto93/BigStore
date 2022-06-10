@@ -129,3 +129,4 @@ class ImformacionDeProductosMetaBox{
 if (class_exists('ImformacionDeProductosMetabox')) {
 	new ImformacionDeProductosMetabox;
 };
+
