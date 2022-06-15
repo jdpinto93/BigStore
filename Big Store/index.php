@@ -25,7 +25,7 @@ include(RAI_RUTA.'/Bodegas/bodegas.php');
 include(RAI_RUTA.'/Bodegas/campos-bodegas.php');
 
 // Incluye metodo de envio para woocommerce
-include(RAI_RUTA.'/envios/envios.php');
+include(RAI_RUTA.'/Envios/envios.php');
 
 //Crea campos para los productos de woocommerce
 include(RAI_RUTA.'/wooCambios/campos-productos.php');
