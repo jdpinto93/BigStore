@@ -66,14 +66,14 @@ function add_shipping_progress_to_order_statuses( $order_statuses ) {
     foreach ( $order_statuses as $key => $status ) {
         $new_order_statuses[ $key ] = $status;
         if ( 'wc-completed' === $key ) {
-            $new_order_statuses['wc-shipping-progress'] = 'Por Calificar';
+            $new_order_statuses['wc-shipping-progress'] = 'Completado';
         }
     }
     return $new_order_statuses;
 }
 add_filter( 'wc_order_statuses', 'add_shipping_progress_to_order_statuses' );
 
-// Agregamos correo al nuevo estado de pedido --> "Por Calificar"
+// Agregamos correo al nuevo estado de pedido --> "Completado"
 
 function email_shipping_notification( $order_id, $checkout=null ) {
    global $woocommerce;

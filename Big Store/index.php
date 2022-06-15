@@ -36,3 +36,6 @@ include(RAI_RUTA.'/wooCambios/pwb-brand.php');
 // Registra los cambios en la modalidad de correos de woocommerce
 include(RAI_RUTA.'/wooCambios/emails-woo.php');
 
+// Registra los cambios en la modalidad de correos de woocommerce
+include(RAI_RUTA.'/wooCambios/ajustesWoo.php');
+
