@@ -39,3 +39,14 @@ include(RAI_RUTA.'/wooCambios/emails-woo.php');
 // Registra los cambios en la modalidad de correos de woocommerce
 include(RAI_RUTA.'/wooCambios/ajustesWoo.php');
 
+// Agrega el campo de Gtin al inventario de Woocommerce
+include(RAI_RUTA.'/wooCambios/gtin/gtin.php');
+
+// Agrega el campo de UPC al inventario de Woocommerce
+include(RAI_RUTA.'/wooCambios/upc/upc.php');
+
+// Agrega el campo de MPN al inventario de Woocommerce
+include(RAI_RUTA.'/wooCambios/mpn/mpn.php');
+
+// Agrega el campo de EAN al inventario de Woocommerce
+include(RAI_RUTA.'/wooCambios/ean/ean.php');

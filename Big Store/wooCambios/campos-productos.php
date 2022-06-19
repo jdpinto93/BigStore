@@ -14,36 +14,6 @@ class ImformacionDeProductosMetaBox{
                     'label' => 'Costo',
                     'id' => '_cost',
                     'type' => 'number',
-                ),
-    
-                array(
-                    'label' => 'Marca',
-                    'id' => 'brand',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Mpn',
-                    'id' => 'mpn',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Gtin',
-                    'id' => '_gtin',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'upc',
-                    'id' => 'upc',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'ean',
-                    'id' => 'ean',
-                    'type' => 'text',
                 )
 
 	);
