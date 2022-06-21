@@ -4,7 +4,7 @@
  * Plugin Name: Big Store
  * Plugin URI: http://www.webmasteryagency.com
  * Description: Método de envío personalizado para WooCommerce y bigcom.com.mx Poer Deal
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Jose Pinto
  * Domain Path: /lang
  * Text Domain: BigExpress
@@ -18,26 +18,23 @@ define('RAI_RUTA',plugin_dir_path(__FILE__));
 
 // Archivos Externos
 
-// Incluye los post para la informacion de las bodegas
-include(RAI_RUTA.'/Bodegas/bodegas.php');
-
-// Incluye los campos de informacion para bodegas
-include(RAI_RUTA.'/Bodegas/campos-bodegas.php');
-
 // Incluye metodo de envio para woocommerce
 include(RAI_RUTA.'/Envios/envios.php');
 
 //Crea campos para los productos de woocommerce
-include(RAI_RUTA.'/wooCambios/campos-productos.php');
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/config.php');
 
 // Registra la taxonomia "marca" a los productos de woocommerce
-include(RAI_RUTA.'/wooCambios/pwb-brand.php');
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/marca-producto.php');
 
-// Registra los cambios en la modalidad de correos de woocommerce
-include(RAI_RUTA.'/wooCambios/emails-woo.php');
+// Registra la taxonomia "marca" a los productos de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/bodegas.php');
 
-// Registra los cambios en la modalidad de correos de woocommerce
-include(RAI_RUTA.'/wooCambios/ajustesWoo.php');
+// Registra la taxonomia "marca" a los productos de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/proveedores.php');
+
+// Configuracion de correos en el area de pedidos
+include(RAI_RUTA.'/wooCambios/woocommerce/templates/emails-config-woo.php');
 
 // Agrega el campo de Gtin al inventario de Woocommerce
 include(RAI_RUTA.'/wooCambios/gtin/gtin.php');
