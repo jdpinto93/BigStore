@@ -19,7 +19,7 @@ define('RAI_RUTA',plugin_dir_path(__FILE__));
 // Archivos Externos
 
 // Incluye metodo de envio para woocommerce
-include(RAI_RUTA.'/Envios/envios.php');
+//include(RAI_RUTA.'/Envios/envios.php');
 
 //Crea campos para los productos de woocommerce
 include(RAI_RUTA.'/wooCambios/woocommerce/productos/config.php');
