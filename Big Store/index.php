@@ -19,7 +19,7 @@ define('RAI_RUTA',plugin_dir_path(__FILE__));
 // Archivos Externos
 
 // Incluye metodo de envio para woocommerce
-//include(RAI_RUTA.'/Envios/envios.php');
+include(RAI_RUTA.'/Envios/envios.php');
 
 //Crea campos para los productos de woocommerce
 include(RAI_RUTA.'/wooCambios/woocommerce/productos/config.php');
@@ -47,3 +47,9 @@ include(RAI_RUTA.'/wooCambios/mpn/mpn.php');
 
 // Agrega el campo de EAN al inventario de Woocommerce
 include(RAI_RUTA.'/wooCambios/ean/ean.php');
+
+// Agrega Boton para mensaje al WhatsApp desde las Ordenes de Woocommerce
+include(RAI_RUTA.'/WooWhatsApp/wc-whatsapp.php');
+
+// Agrega apartado para añadir el codigo de google reviews para valoraciones de clientes por emails
+include(RAI_RUTA.'/GoogleReviews/google-customer-reviews.php');
