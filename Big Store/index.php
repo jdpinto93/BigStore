@@ -4,7 +4,7 @@
  * Plugin Name: Big Store
  * Plugin URI: http://www.webmasteryagency.com
  * Description: Método de envío personalizado para WooCommerce y bigcom.com.mx Poer Deal
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Jose Pinto
  * Domain Path: /lang
  * Text Domain: BigExpress
@@ -53,3 +53,6 @@ include(RAI_RUTA.'/WooWhatsApp/wc-whatsapp.php');
 
 // Agrega apartado para añadir el codigo de google reviews para valoraciones de clientes por emails
 include(RAI_RUTA.'/GoogleReviews/google-customer-reviews.php');
+
+// Agrega la ventana modal del carrito de woocommerce en el frontend
+include(RAI_RUTA.'/CartPopup/jp-cp-main.php');
