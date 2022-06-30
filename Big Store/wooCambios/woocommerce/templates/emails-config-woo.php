@@ -59,44 +59,62 @@ return $order_statuses;
 }
 add_filter( 'wc_order_statuses', 'ts_rename_order_status_msg', 20, 1 );
 
-// Nuevo estado de pedidos --> Calificacion de pedidos
+//Crear un nuevo estado para los pedidos de WooCommerce
 
-function add_shipping_progress_to_order_statuses( $order_statuses ) {
-    $new_order_statuses = array();
-    foreach ( $order_statuses as $key => $status ) {
-        $new_order_statuses[ $key ] = $status;
-        if ( 'wc-completed' === $key ) {
-            $new_order_statuses['wc-shipping-progress'] = 'Completado';
-        }
+// Añadir nuevos estados a un pedido en Woocommerce, por ejemplo: completado
+// Registrar Estado del pedido completado - hello-elementor es el text_domain
+
+function wpex_wc_register_post_statuses_completado() {
+    register_post_status( 'wc-order-sent', array(
+    'label' => _x( 'Completado', 'WooCommerce Order status', 'hello-elementor' ),
+    'public' => true,
+    'exclude_from_search' => false,
+    'show_in_admin_all_list' => true,
+    'show_in_admin_status_list' => true,
+    'label_count' => _n_noop( 'Completado (%s)', 'Completado (%s)', 'hello-elementor' )
+    ) );
     }
-    return $new_order_statuses;
-}
-add_filter( 'wc_order_statuses', 'add_shipping_progress_to_order_statuses' );
-
-// Agregamos correo al nuevo estado de pedido --> "Completado"
-
-function email_shipping_notification( $order_id, $checkout=null ) {
-   global $woocommerce;
-   $order = new WC_Order( $order_id );
-   //error_log( $order->status );
-   if($order->status === 'shipping-progress' ) {
-      // Mensaje del email.
-      $mailer 		= $woocommerce->mailer();
-      $message_body = __( '¡Gracias por tu compra¡ esperamos que te guste!  Si es así, ¿considerarías publicar una reseña en línea? Esto nos ayuda a seguir brindando excelentes productos y ayuda a los compradores potenciales a tomar decisiones confiables. 🙏.
-¿Podría? Dejarnos un comentario sobre su experiencia de compra en Facebook o Google  
-
-Google: https://g.page/r/CSsGtczHG8DXEB0/review 
-
-Facebook: https://www.facebook.com/BigcomOficial/reviews/?ref=page_internal
-
-¡Muchas gracias!, disfruta tus productos', 'text_domain'  );
-
-      $message 		= $mailer->wrap_message(
-      // Mensaje en header.
-      sprintf( __( 'Bigcom, Power Deal.', 'text_domain'  ), $order->get_order_number() ), $message_body );
-      // Asunto del mensaje.
-	  $result = $mailer->send( $order->billing_email, sprintf( __( 'Es nuestra prioridad darte la mejor atencion.', 'text_domain'  ), $order->get_order_number() ), $message );
-	  //error_log( $result );
-	}
-}
-add_action( 'woocommerce_order_status_changed', 'email_shipping_notification');
+    add_filter( 'init', 'wpex_wc_register_post_statuses_completado' );
+    
+    // Añadir Estado del pedido Completado a WooCommerce
+    function wpex_wc_add_order_statuses_completado( $order_statuses ) {
+    $order_statuses['wc-order-sent'] = _x( 'Completado', 'WooCommerce Order status', 'hello-elementor' );
+    return $order_statuses;
+    }
+    add_filter( 'wc_order_statuses', 'wpex_wc_add_order_statuses_completado' );
+    
+    // Email que se envía cuando el estado del pedido está en Completado
+    
+    function email_shipping_notification( $order_id, $checkout=null ) {
+    global $woocommerce;
+    
+    $order = new WC_Order( $order_id );
+    
+    //error_log( $order->status );
+    
+    if($order->status === 'order-sent' ) {
+    
+    // Mensaje del email.
+    $mailer = $woocommerce->mailer();
+    
+    $message_body = __( '¡Gracias por tu compra¡ esperamos que te guste!  Si es así, ¿considerarías publicar una reseña en línea? Esto nos ayuda a seguir brindando excelentes productos y ayuda a los compradores potenciales a tomar decisiones confiables. 🙏.
+    ¿Podría? Dejarnos un comentario sobre su experiencia de compra en Facebook o Google  
+    
+    Google: https://g.page/r/CSsGtczHG8DXEB0/review 
+    
+    Facebook: https://www.facebook.com/BigcomOficial/reviews/?ref=page_internal
+    
+    ¡Muchas gracias!, disfruta tus productos', 'hello-elementor' );
+    
+    $message = $mailer->wrap_message(
+    // Mensaje en header.
+    sprintf( __( 'Su pedido ha sido completado', 'hello-elementor' ), $order->get_order_number() ), $message_body );
+    
+    // Asunto del mensaje.
+    $result = $mailer->send( $order->billing_email, sprintf( __( 'Su pedido ha sido completado desde Catando Vino', 'text_domain' ), $order->get_order_number() ), $message );
+    
+    //error_log( $result );
+    }
+    
+    }
+    add_action( 'woocommerce_order_status_changed', 'email_shipping_notification');
