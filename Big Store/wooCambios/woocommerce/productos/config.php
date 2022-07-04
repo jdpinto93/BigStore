@@ -16,7 +16,7 @@ add_filter('woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_a
 
 //AÑADIMOS NUESTRO CAMPO PRECIO DE COSTO
 function wc_cost_product_field(){
-     woocommerce_wp_text_input(array('id' => '_cost', 'class' => 'wc_input_price short', 'label' => __('Precio Donación', 'woocommerce') . ' (' . get_woocommerce_currency_symbol() . ')'));
+     woocommerce_wp_text_input(array('id' => '_cost', 'class' => 'wc_input_price short', 'label' => __('Precio de Costo', 'woocommerce') . ' (' . get_woocommerce_currency_symbol() . ')'));
 }
 add_action('woocommerce_product_options_pricing', 'wc_cost_product_field');
 
