@@ -1,5 +1,26 @@
 <?php
 
+//Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
+defined('ABSPATH') or die( "Bye bye" );
+
+// Agrega la taxonomia "Bodega" al producto de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/bodegas/bodegas.php');
+
+// Agrega el campo del ean al inventario de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/ean/ean.php');
+
+// Agrega el campo de mpn al producto de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/mpn/mpn.php');
+
+// Agrega el campo de upc al inventario de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/upc/upc.php');
+
+// Agrega la taxonomia de las marcas al campo de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/marcas/marca-producto.php');
+
+// Agrega la taxonomia de los proveedores al producto de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/proveedores/proveedores.php');
+
 //Cambiar texto "Add to cart" de WooCommerce
 
 // Para cambiarlo en la single
