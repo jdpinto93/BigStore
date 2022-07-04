@@ -1,11 +1,14 @@
 <?php
- 
-/**
- * Plugin Name: Big Store
- * Plugin URI: http://www.webmasteryagency.com
- * Description: Método de envío personalizado para WooCommerce y bigcom.com.mx Poer Deal
- * Version: 1.0.5
- * Author: Jose Pinto
+ /**
+ * Plugin Name:       Big Store
+ * Plugin URI:        http://www.webmasteryagency.com
+ * Description:       Estructura de la eCommerce Bigcom ajustada a Woocommerce, Este plugins registra todos los campos necesarios para que Bigcom pueda funcionar de forma optima.
+ * Version:           1.0.6
+ * Requires at least: 5.2
+ * Requires PHP:      7.4.2
+ * Author:            Jose Pinto
+ * Author URI:        http://www.webmasteryagency.com
+ * License:           GPL v3 or later
  * Domain Path: /lang
  * Text Domain: BigExpress
  */

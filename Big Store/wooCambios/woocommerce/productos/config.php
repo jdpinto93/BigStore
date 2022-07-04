@@ -21,6 +21,9 @@ include(RAI_RUTA.'/wooCambios/woocommerce/productos/marcas/marca-producto.php');
 // Agrega la taxonomia de los proveedores al producto de woocommerce
 include(RAI_RUTA.'/wooCambios/woocommerce/productos/proveedores/proveedores.php');
 
+// Agrega campos adicionales a la categorias de los productos de woocommerce
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/categoria/categoria.php');
+
 //Cambiar texto "Add to cart" de WooCommerce
 
 // Para cambiarlo en la single
