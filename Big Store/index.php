@@ -4,7 +4,7 @@
  * Plugin Name: Big Store
  * Plugin URI: http://www.webmasteryagency.com
  * Description: Método de envío personalizado para WooCommerce y bigcom.com.mx Poer Deal
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Jose Pinto
  * Domain Path: /lang
  * Text Domain: BigExpress
@@ -35,9 +35,6 @@ include(RAI_RUTA.'/wooCambios/woocommerce/productos/proveedores.php');
 
 // Configuracion de correos en el area de pedidos
 include(RAI_RUTA.'/wooCambios/woocommerce/templates/emails-config-woo.php');
-
-// Agrega el campo de Gtin al inventario de Woocommerce
-include(RAI_RUTA.'/wooCambios/gtin/gtin.php');
 
 // Agrega el campo de UPC al inventario de Woocommerce
 include(RAI_RUTA.'/wooCambios/upc/upc.php');
