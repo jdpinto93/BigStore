@@ -3,181 +3,104 @@
 //Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
 defined('ABSPATH') or die( "Bye bye" );
 
-// Register Custom Taxonomy
-function jp_bodega() {
+// Registra taxonomia para las bodegas
 
-	$labels = array(
-		'name'                       => _x( 'bodegas', 'Taxonomy General Name', 'text_domain' ),
-		'singular_name'              => _x( 'bodega', 'Taxonomy Singular Name', 'text_domain' ),
-		'menu_name'                  => __( 'Bodega', 'text_domain' ),
-		'all_items'                  => __( 'Todas las bodegas', 'text_domain' ),
-		'parent_item'                => __( 'Bodega relacionada', 'text_domain' ),
-		'parent_item_colon'          => __( 'Bodega relacionada:', 'text_domain' ),
-		'new_item_name'              => __( 'Nueva Bodega', 'text_domain' ),
-		'add_new_item'               => __( 'Añadir Nueva Bodega', 'text_domain' ),
-		'edit_item'                  => __( 'Editar Bodega', 'text_domain' ),
-		'update_item'                => __( 'Cargar Bodega', 'text_domain' ),
-		'view_item'                  => __( 'Ver Bodega', 'text_domain' ),
-		'separate_items_with_commas' => __( 'Separar Bodegas por comas', 'text_domain' ),
-		'add_or_remove_items'        => __( 'Añadir o eliminar Bodegas', 'text_domain' ),
-		'choose_from_most_used'      => __( 'Bodegas mas usadas', 'text_domain' ),
-		'popular_items'              => __( 'Bodegas favoritas', 'text_domain' ),
-		'search_items'               => __( 'Buscar Bodegas', 'text_domain' ),
-		'not_found'                  => __( 'Sin Resultados', 'text_domain' ),
-		'no_terms'                   => __( 'No hay Bodegas', 'text_domain' ),
-		'items_list'                 => __( 'Lista de Bodegas', 'text_domain' ),
-		'items_list_navigation'      => __( 'Navegar por lista de Bodegas', 'text_domain' ),
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => true,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => false,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-		'show_in_rest'               => true,
-	);
-	register_taxonomy( 'pwb-bodega', array( 'product' ), $args );
+add_action( 'init', 'create_bodega_hierarchical_taxonomy', 0 );
+
+//create a custom taxonomy name it topics for your posts
+ 
+function create_bodega_hierarchical_taxonomy() {
+ 
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+ 
+  $labels = array(
+    'name' => _x( 'Bodegas', 'taxonomy general name' ),
+    'singular_name' => _x( 'Bodega', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Buscar Bodegas' ),
+    'all_items' => __( 'Todas las Bodegas' ),
+    'parent_item' => __( 'Bodega Relacionada' ),
+    'parent_item_colon' => __( 'Bodega Relacionada:' ),
+    'edit_item' => __( 'Editar Bodega' ), 
+    'update_item' => __( 'Subir Bodega' ),
+    'add_new_item' => __( 'Añadir Nueva Bodega' ),
+    'new_item_name' => __( 'Nuevo Nombre de Bodega' ),
+    'menu_name' => __( 'Bodegas' ),
+  );    
+  
+    $capabilities = array(
+        'manage_terms'               => 'manage_woocommerce',
+        'edit_terms'                 => 'manage_woocommerce',
+        'delete_terms'               => 'manage_woocommerce',
+        'assign_terms'               => 'manage_woocommerce',
+    ); 
+ 
+// Now register the taxonomy
+     $args = array(
+        'labels'                     => $labels,
+        'show_in_rest'               => true,       
+        'hierarchical'               => true,
+        'public'                     => true,
+        'show_ui'                    => true,
+        'show_admin_column'          => false,
+        'show_in_nav_menus'          => true,
+        'show_tagcloud'              => true,
+        'capabilities'               => $capabilities,
+        
+    
+    );
+    register_taxonomy( 'pwb-bodega', array( 'product' ), $args );
+    register_taxonomy_for_object_type( 'pwb-bodega', 'product' );
+
+ 
+}
+
+//Register taxonomy API for WC
+add_action( 'rest_api_init', 'register_rest_field_for_custom_taxonomy_bodega' );
+function register_rest_field_for_custom_taxonomy_bodega() {
+    
+
+    register_rest_field('product', "pwb-bodega", array(
+        'get_callback'    => 'product_get_callback_bodega',
+        'update_callback'    => 'product_update_callback_bodega',
+        'schema' => null,
+    ));    
 
 }
-add_action( 'init', 'jp_bodega', 0 );
+        //Get Taxonomy record in wc REST API
+         function product_get_callback_bodega($post, $attr, $request, $object_type)
+        {
+            $terms = array();
 
-// Registra campos de informacion a las bodegas
+            // Get terms
+            foreach (wp_get_post_terms( $post[ 'id' ],'pwb-bodega') as $term) {
+                $terms[] = array(
+                    'id'        => $term->term_id,
+                    'name'      => $term->name,
+                    'slug'      => $term->slug,
+                    'estado'  => get_term_meta($term->term_id, 'estado_bodega', true),
+                    'ciudad'  => get_term_meta($term->term_id, 'ciudad_bodega', true),
+                    'direccion'  => get_term_meta($term->term_id, 'direccion_bodega', true),
+                    'Codigo Postal'  => get_term_meta($term->term_id, 'postal_code_bodega', true),
+                    'latitud'  => get_term_meta($term->term_id, 'latitud_bodega', true),
+                    'longitud'  => get_term_meta($term->term_id, 'longitud_bodega', true),
+                    'Nombre de contacto'  => get_term_meta($term->term_id, 'contacto_bodega', true),
+                    'Tel. de contacto'  => get_term_meta($term->term_id, 'tel_contacto_bodega', true),
+                    'Tel. de Bodega'  => get_term_meta($term->term_id, 'tel_contacto_bodega1', true)
+                );
+            }
 
-
-class Metabox{
-	private $meta_fields = array(
-                array(
-                    'label' => 'Estado',
-                    'id' => 'estado_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Ciudad',
-                    'id' => 'ciudad_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Dirección',
-                    'id' => 'direccion_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Codigo Postal',
-                    'id' => 'postal_code_bodega',
-                    'type' => 'number',
-                ),
-    
-                array(
-                    'label' => 'Latitud',
-                    'id' => 'latitud_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Longitud',
-                    'id' => 'longitud_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Nombre de contacto',
-                    'id' => 'contacto_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Telefono de Contacto',
-                    'id' => 'tel_contacto_bodega',
-                    'type' => 'tel',
-                ),
-    
-                array(
-                    'label' => 'Telefono de Bodega',
-                    'id' => 'tel_contacto_bodega1',
-                    'type' => 'tel',
-                )
-
-	);
-	public function __construct() {
-		if ( is_admin() ) {
-			add_action( 'pwb-bodega_add_form_fields', array( $this, 'create_fields' ), 10, 2 );
-			add_action( 'pwb-bodega_edit_form_fields', array( $this, 'edit_fields' ),  10, 2 );
-			add_action( 'created_pwb-bodega', array( $this, 'save_fields' ), 10, 1 );
-			add_action( 'edited_pwb-bodega',  array( $this, 'save_fields' ), 10, 1 ); 
-		}
-	}
-    
-	public function create_fields( $taxonomy ) {
-		$output = '';
-		foreach ( $this->meta_fields as $meta_field ) {
-			$label = '<label for="' . $meta_field['id'] . '">' . $meta_field['label'] . '</label>';
-			if ( empty( $meta_value ) ) {
-				if ( isset( $meta_field['default'] ) ) {
-					$meta_value = $meta_field['default'];
-				}
-			}
-			switch ( $meta_field['type'] ) {
-				default:
-					$input = sprintf(
-						'<input %s id="%s" name="%s" type="%s" value="%s">',
-						$meta_field['type'] !== 'color' ? '' : '',
-						$meta_field['id'],
-						$meta_field['id'],
-						$meta_field['type'],
-						$meta_value
-					);
-			}
-			$output .= '<div class="form-field">'.$this->format_rows( $label, $input ).'</div>';
-		}
-		echo $output;
-	}
-	public function edit_fields( $term, $taxonomy ) {
-		$output = '';
-		foreach ( $this->meta_fields as $meta_field ) {
-			$label = '<label for="' . $meta_field['id'] . '">' . $meta_field['label'] . '</label>';
-			$meta_value = get_term_meta( $term->term_id, $meta_field['id'], true );
-			switch ( $meta_field['type'] ) {
-                
-				default:
-					$input = sprintf(
-						'<input %s id="%s" name="%s" type="%s" value="%s">',
-						$meta_field['type'] !== 'color' ? '' : '',
-						$meta_field['id'],
-						$meta_field['id'],
-						$meta_field['type'],
-						$meta_value
-					);
-			}
-			$output .= $this->format_rows( $label, $input );
-		}
-		echo '<div class="form-field">' . $output . '</div>';
-	}
-	public function format_rows( $label, $input ) {
-		return '<tr class="form-field"><th>'.$label.'</th><td>'.$input.'</td></tr>';
-	}
-	public function save_fields( $term_id ) {
-		foreach ( $this->meta_fields as $meta_field ) {
-			if ( isset( $_POST[ $meta_field['id'] ] ) ) {
-				switch ( $meta_field['type'] ) {
-					case 'email':
-						$_POST[ $meta_field['id'] ] = sanitize_email( $_POST[ $meta_field['id'] ] );
-						break;
-					case 'text':
-						$_POST[ $meta_field['id'] ] = sanitize_text_field( $_POST[ $meta_field['id'] ] );
-						break;
-				}
-				update_term_meta( $term_id, $meta_field['id'], $_POST[ $meta_field['id']] );
-			} else if ( $meta_field['type'] === 'checkbox' ) {
-				update_term_meta( $term_id, $meta_field['id'], '0' );
-			}
-		}
-	}
+            return $terms;
+        }
+        
+         //Update Taxonomy record in wc REST API
+         function product_update_callback_bodega($values, $post, $attr, $request, $object_type)
+        {   
+            // Post ID
+            $postId = $post->get_id();
+            
+            //Example: $values = [2,4,3];                
+            
+            // Set terms
+           wp_set_object_terms( $postId, $values , 'pwb-bodega');
 }
-if (class_exists('Metabox')) {
-	new Metabox;
-};
