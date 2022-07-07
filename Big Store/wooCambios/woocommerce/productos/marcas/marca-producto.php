@@ -56,14 +56,14 @@ function register_rest_field_for_custom_taxonomy_brands() {
     
 
     register_rest_field('product', "pwb-brand", array(
-        'get_callback'    => 'product_get_callback',
-        'update_callback'    => 'product_update_callback',
+        'get_callback'    => 'product_get_callback_brand',
+        'update_callback'    => 'product_update_callback_brand',
         'schema' => null,
     ));    
 
 }
         //Get Taxonomy record in wc REST API
-         function product_get_callback($post, $attr, $request, $object_type)
+         function product_get_callback_brand($post, $attr, $request, $object_type)
         {
             $terms = array();
 
@@ -81,14 +81,21 @@ function register_rest_field_for_custom_taxonomy_brands() {
             return $terms;
         }
         
-         //Update Taxonomy record in wc REST API
-         function product_update_callback($values, $post, $attr, $request, $object_type)
-        {   
-            // Post ID
-            $postId = $post->get_id();
-            
-            //Example: $values = [2,4,3];                
-            
-            // Set terms
-           wp_set_object_terms( $postId, $values , 'pwb-brand');
+//Update Taxonomy record in wc REST API
+function product_update_callback_brand($values, $post, $attr, $request, $object_type)
+{   
+    // Post ID            
+    $postId = $post->id;
+    
+    //Example: $values = [2,4,3];    
+
+     error_log("debug on values");
+     error_log(json_encode($values));
+                     
+     $numarray = [];             
+     foreach($values as $value){
+         $numarray[] = (int)$value['id'];
+     }
+      
+   wp_set_object_terms( $postId, $numarray , 'pwb-brand');
 }

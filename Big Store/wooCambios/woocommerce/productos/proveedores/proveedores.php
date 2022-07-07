@@ -80,18 +80,25 @@ function register_rest_field_for_custom_taxonomy_proveedors() {
             }
 
             return $terms;
-        }
+}
+
+//Update Taxonomy record in wc REST API
+     function product_update_callback_proveedor($values, $post, $attr, $request, $object_type)
+    {   
+        // Post ID            
+        $postId = $post->id;
         
-         //Update Taxonomy record in wc REST API
-         function product_update_callback_proveedor($values, $post, $attr, $request, $object_type)
-        {   
-            // Post ID
-            $postId = $post->get_id();
-            
-            //Example: $values = [2,4,3];                
-            
-            // Set terms
-           wp_set_object_terms( $postId, $values , 'pwb-proveedor');
-            
-            
-        }
+        //Example: $values = [2,4,3];    
+ 
+         error_log("debug on values");
+         error_log(json_encode($values));
+                         
+         $numarray = [];             
+         foreach($values as $value){
+             $numarray[] = (int)$value['id'];
+         }
+          
+       wp_set_object_terms( $postId, $numarray , 'pwb-proveedor');
+        
+        
+    }
