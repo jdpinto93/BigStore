@@ -3,7 +3,7 @@
  * Plugin Name:       Big Store
  * Plugin URI:        http://www.webmasteryagency.com
  * Description:       Estructura de la eCommerce Bigcom ajustada a Woocommerce, Este plugins registra todos los campos necesarios para que Bigcom pueda funcionar de forma optima.
- * Version:           1.0.8
+ * Version:           1.0.9
  * Requires at least: 5.2
  * Requires PHP:      7.4.2
  * Author:            Jose Pinto

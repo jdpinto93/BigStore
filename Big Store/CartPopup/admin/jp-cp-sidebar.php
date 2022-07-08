@@ -1,4 +1,8 @@
 <?php
+
+//Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
+defined('ABSPATH') or die( "Bye bye" );
+
 	$plugins_list = array(
 		array(
 			'title' 	=> 'Configuracion del carrito',

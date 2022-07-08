@@ -1,5 +1,9 @@
 <?php
 
+//Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
+defined('ABSPATH') or die( "Bye bye" );
+
+
 add_action( 'init', 'create_brands_hierarchical_taxonomy', 0 );
 
 //create a custom taxonomy name it topics for your posts

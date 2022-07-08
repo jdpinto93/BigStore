@@ -34,5 +34,10 @@ include(RAI_RUTA.'/wooCambios/woocommerce/productos/proveedores/proveedores.php'
 // Agrega campos adicionales a la categorias de los productos de woocommerce
 include(RAI_RUTA.'/wooCambios/woocommerce/productos/categoria/categoria.php');
 
-// Agrega 
-//include(RAI_RUTA.'/wooCambios/woocommerce/productos/higthtligt/hightligt.php');
+// Agrega un campo de galeria al producto de woocommerce para interpretar las imagenes de los hightligt
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/higthtligt/hightligt.php');
+
+// Agrega un campo de editor al producto la ficha de producto de woocommerce que es capaz de leer la biblioteca de medios
+include(RAI_RUTA.'/wooCambios/woocommerce/productos/pdfProduct/pdfProduct.php');
+
+
