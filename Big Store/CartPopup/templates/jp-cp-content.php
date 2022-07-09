@@ -39,11 +39,11 @@ $cart_data = $cart_contents;
 		<table class="jp-cp-cart">
 			<?php if($show_full_cart): ?>
 				<tr class="jp-cp-ths">
-					<th class="xcp-rhead"><?php _e('Remove','added-to-cart-popup-woocommerce'); ?></th>
-					<th><?php _e('Image','added-to-cart-popup-woocommerce'); ?></th>
-					<th><?php _e('Title','added-to-cart-popup-woocommerce'); ?></th>
-					<th class="xcp-phead"><?php _e('Price','added-to-cart-popup-woocommerce'); ?></th>
-					<th><?php _e('Quantity','added-to-cart-popup-woocommerce'); ?></th>
+					<th class="xcp-rhead"><?php _e('Quitar','added-to-cart-popup-woocommerce'); ?></th>
+					<th><?php _e('Articulo','added-to-cart-popup-woocommerce'); ?></th>
+					<th><?php _e('Descripcion','added-to-cart-popup-woocommerce'); ?></th>
+					<th class="xcp-phead"><?php _e('Precio','added-to-cart-popup-woocommerce'); ?></th>
+					<th><?php _e('Cantidad','added-to-cart-popup-woocommerce'); ?></th>
 					<th><?php _e('Total','added-to-cart-popup-woocommerce'); ?></th>
 				</tr>
 			<?php endif; ?>
@@ -209,7 +209,7 @@ $cart_data = $cart_contents;
 	<div class="jp-cp-table-bottom">
 		
 		<?php if($show_full_cart): ?>
-			<a class="jp-cp-empct"><span class="jp-cp-icon-close"></span><?php _e('Empty Cart','added-to-cart-popup-woocommerce'); ?></a>
+			<a class="jp-cp-empct"><span class="jp-cp-icon-close"></span><?php _e('Vaciar Carrito','added-to-cart-popup-woocommerce'); ?></a>
 		<?php endif; ?>
 
 		<div class="jp-cp-cart-total">
@@ -217,9 +217,9 @@ $cart_data = $cart_contents;
 	</div>
 
 	<div class="jp-cp-cart-btns">
-		<a class="jp-cp-btn-vc xcp-btn" href="<?php echo wc_get_cart_url(); ?>"><?php _e('View Cart','added-to-cart-popup-woocommerce'); ?></a>
-		<a class="jp-cp-btn-ch xcp-btn" href="<?php echo wc_get_checkout_url(); ?>"><?php _e('Checkout','added-to-cart-popup-woocommerce'); ?></a>
-		<a class="jp-cp-close xcp-btn" href="<?php echo apply_filters('jp_cp_continue_shopping_url',''); ?>"><?php _e('Continue Shopping','added-to-cart-popup-woocommerce'); ?></a>
+		<a class="jp-cp-btn-vc xcp-btn" href="<?php echo wc_get_cart_url(); ?>"><?php _e('Ver Carrito','added-to-cart-popup-woocommerce'); ?></a>
+		<a class="jp-cp-btn-ch xcp-btn" href="<?php echo wc_get_checkout_url(); ?>"><?php _e('Pagar','added-to-cart-popup-woocommerce'); ?></a>
+		<a class="jp-cp-close xcp-btn" href="<?php echo apply_filters('jp_cp_continue_shopping_url',''); ?>"><?php _e('Seguir Comprando','added-to-cart-popup-woocommerce'); ?></a>
 	</div>
 
 
