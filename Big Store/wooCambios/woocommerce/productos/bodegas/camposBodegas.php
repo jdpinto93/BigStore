@@ -3,25 +3,41 @@
 //Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
 defined('ABSPATH') or die( "Bye bye" );
 
-// Agrega los campos adicionales a las Bodegas
-
-class MetaBodegas{
+class JpBodegas{
 	private $meta_fields = array(
                 array(
+                    'label' => 'Calle',
+                    'id' => 'direccion_calle',
+                    'type' => 'text',
+                ),
+    
+                array(
+                    'label' => 'Numero Exterior',
+                    'id' => 'jp_num_exterior',
+                    'type' => 'number',
+                ),
+    
+                array(
+                    'label' => 'Numero Interior',
+                    'id' => 'jp_num_interior',
+                    'type' => 'number',
+                ),
+    
+                array(
+                    'label' => 'Colonia',
+                    'id' => 'jp_direccion_colonia',
+                    'type' => 'text',
+                ),
+    
+                array(
                     'label' => 'Estado',
-                    'id' => 'estado_bodega',
+                    'id' => '_jpdireccion_estado',
                     'type' => 'text',
                 ),
     
                 array(
-                    'label' => 'Ciudad',
-                    'id' => 'ciudad_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Dirección',
-                    'id' => 'direccion_bodega',
+                    'label' => 'Municipio',
+                    'id' => 'jp_direccion_municipio',
                     'type' => 'text',
                 ),
     
@@ -32,33 +48,33 @@ class MetaBodegas{
                 ),
     
                 array(
-                    'label' => 'Latitud',
-                    'id' => 'latitud_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
-                    'label' => 'Longitud',
-                    'id' => 'longitud_bodega',
-                    'type' => 'text',
-                ),
-    
-                array(
                     'label' => 'Nombre de contacto',
                     'id' => 'contacto_bodega',
                     'type' => 'text',
                 ),
     
                 array(
-                    'label' => 'Telefono de Contacto',
+                    'label' => 'Telefono Movil',
                     'id' => 'tel_contacto_bodega',
                     'type' => 'tel',
                 ),
     
                 array(
-                    'label' => 'Telefono de Bodega',
+                    'label' => 'Telefono Fijo',
                     'id' => 'tel_contacto_bodega1',
                     'type' => 'tel',
+                ),
+    
+                array(
+                    'label' => 'Entre calles',
+                    'id' => 'jp_entre_calles',
+                    'type' => 'text',
+                ),
+    
+                array(
+                    'label' => 'Indicaciones',
+                    'id' => 'jp_indicaciones',
+                    'type' => 'textarea',
                 )
 
 	);
@@ -75,12 +91,18 @@ class MetaBodegas{
 		$output = '';
 		foreach ( $this->meta_fields as $meta_field ) {
 			$label = '<label for="' . $meta_field['id'] . '">' . $meta_field['label'] . '</label>';
-			if ( empty( $meta_value ) ) {
-				if ( isset( $meta_field['default'] ) ) {
-					$meta_value = $meta_field['default'];
-				}
-			}
+			$meta_value = get_term_meta( $term->term_id, $meta_field['id'], true );
 			switch ( $meta_field['type'] ) {
+                
+                                case 'textarea':
+                                    $input = sprintf(
+                                        '<textarea id="%s" name="%s" rows="5">%s</textarea>',
+                                        $meta_field['id'],
+                                        $meta_field['id'],
+                                        $meta_value
+                                    );
+                                    break;
+            
 				default:
 					$input = sprintf(
 						'<input %s id="%s" name="%s" type="%s" value="%s">',
@@ -91,9 +113,9 @@ class MetaBodegas{
 						$meta_value
 					);
 			}
-			$output .= '<div class="form-field">'.$this->format_rows( $label, $input ).'</div>';
+			$output .= $this->format_rows( $label, $input );
 		}
-		echo $output;
+		echo '<div class="form-field">' . $output . '</div>';
 	}
 	public function edit_fields( $term, $taxonomy ) {
 		$output = '';
@@ -102,6 +124,15 @@ class MetaBodegas{
 			$meta_value = get_term_meta( $term->term_id, $meta_field['id'], true );
 			switch ( $meta_field['type'] ) {
                 
+                                case 'textarea':
+                                    $input = sprintf(
+                                        '<textarea id="%s" name="%s" rows="5">%s</textarea>',
+                                        $meta_field['id'],
+                                        $meta_field['id'],
+                                        $meta_value
+                                    );
+                                    break;
+            
 				default:
 					$input = sprintf(
 						'<input %s id="%s" name="%s" type="%s" value="%s">',
@@ -137,6 +168,9 @@ class MetaBodegas{
 		}
 	}
 }
-if (class_exists('MetaBodegas')) {
-	new MetaBodegas;
+if (class_exists('JpBodegas')) {
+	new JpBodegas;
 };
+
+
+
