@@ -78,15 +78,18 @@ function register_rest_field_for_custom_taxonomy_bodega() {
                     'id'        => $term->term_id,
                     'name'      => $term->name,
                     'slug'      => $term->slug,
-                    'estado'  => get_term_meta($term->term_id, 'estado_bodega', true),
-                    'ciudad'  => get_term_meta($term->term_id, 'ciudad_bodega', true),
-                    'direccion'  => get_term_meta($term->term_id, 'direccion_bodega', true),
+                    'Calle'  => get_term_meta($term->term_id, 'direccion_calle', true),
+                    'Numero Exterior'  => get_term_meta($term->term_id, 'jp_num_exterior', true),
+                    'Numero Interior'  => get_term_meta($term->term_id, 'jp_num_interior', true),
+                    'Colonia'  => get_term_meta($term->term_id, 'jp_direccion_colonia', true),
+                    'Estado'  => get_term_meta($term->term_id, '_jpdireccion_estado', true),
+                    'Municipio'  => get_term_meta($term->term_id, 'jp_direccion_municipio', true),
                     'Codigo Postal'  => get_term_meta($term->term_id, 'postal_code_bodega', true),
-                    'latitud'  => get_term_meta($term->term_id, 'latitud_bodega', true),
-                    'longitud'  => get_term_meta($term->term_id, 'longitud_bodega', true),
                     'Nombre de contacto'  => get_term_meta($term->term_id, 'contacto_bodega', true),
-                    'Tel. de contacto'  => get_term_meta($term->term_id, 'tel_contacto_bodega', true),
-                    'Tel. de Bodega'  => get_term_meta($term->term_id, 'tel_contacto_bodega1', true)
+                    'Telefono Movil'  => get_term_meta($term->term_id, 'tel_contacto_bodega', true),
+                    'Telefono Fijo'  => get_term_meta($term->term_id, 'tel_contacto_bodega1', true),
+                    'Entre calles'  => get_term_meta($term->term_id, 'jp_entre_calles', true),
+                    'Indicaciones'  => get_term_meta($term->term_id, 'jp_indicaciones', true)
                 );
             }
 
