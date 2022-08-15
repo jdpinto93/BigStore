@@ -1,29 +1,13 @@
 <?php
 
-if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly
-}
+//Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
+defined('ABSPATH') or die( "Bye bye" );
 
-/**
- * Check if WooCommerce is active
- **/
-if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-    /**
-     * Plugin Code
-     */
+// Crea Los botones de WhatsApp en Las ordenes de Woocommerce
+include(RAI_RUTA.'/WooWhatsApp/includes/whatsapp_btn_in_order.php');
 
-    /**
-     * Enqueue Scripts and Styles
-     */
-    require_once plugin_dir_path(__FILE__) . 'includes/enqueue_files.php';
+// Crea in botone de WhatsApp en Las acciones de pedidos de Woocommerce
+include(RAI_RUTA.'/WooWhatsApp/includes/whatsapp_btn_in_list_order.php');
 
-    /**
-     * Add the WhatsApp Button in the WooCommerce Order
-     */
-    require_once plugin_dir_path(__FILE__) . 'includes/whatsapp_btn_in_order.php';
-
-    /**
-     * Add the WhatsApp Button in the List of Orders in WooCommerce
-     */
-    require_once plugin_dir_path(__FILE__) . 'includes/whatsapp_btn_in_list_order.php';
-}
+// Encola los estilos de los botones
+include(RAI_RUTA.'/WooWhatsApp/includes/enqueue_files.php');

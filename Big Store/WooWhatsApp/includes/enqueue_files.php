@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 function wc_whatsapp_enqueue()
 {
     if (is_user_logged_in()) {
-        wp_enqueue_style('style-for-wc-whatsapp', plugins_url() . '/wc-whatsapp/assets/style.css', array(), time(), 'all');
+        wp_enqueue_style('style-for-whatsapp', Woo_Big_URL . '/WooWhatsApp/assets/style.css', array(), time(), 'all');
     }
 }
 add_action('admin_enqueue_scripts', 'wc_whatsapp_enqueue');
