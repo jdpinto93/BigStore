@@ -16,9 +16,9 @@
 //Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
 defined('ABSPATH') or die( "Bye bye" );
 
-define('RAI_RUTA',plugin_dir_path(__FILE__));
+//Aqui se definen las constantes
 
-// Plugin URL
+define('RAI_RUTA',plugin_dir_path(__FILE__));
 define( 'Woo_Big_URL', plugin_dir_url( __FILE__ ) );
 
 // Archivos Externos
@@ -43,3 +43,14 @@ include(RAI_RUTA.'/CartPopup/jp-cp-main.php');
 
 // Crea el menu de opciones
 include(RAI_RUTA.'/includes/adminMenu.php');
+
+
+//  Enqueue Scripts and Styles
+
+function styele_proyect_main(){
+    if (is_user_logged_in()) {
+        wp_enqueue_style('style-proyect', Woo_Big_URL . '/assets/bootstrap.min.css', array(), time(), 'all');
+        wp_enqueue_script( 'javascript_proyect', Woo_Big_URL . 'assets/bootstrap.min.js', array( 'jquery' ), true );
+    }
+}
+add_action('admin_enqueue_scripts', 'styele_proyect_main');

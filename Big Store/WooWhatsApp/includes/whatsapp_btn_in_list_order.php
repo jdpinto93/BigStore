@@ -14,8 +14,9 @@ function add_whatsapp_btn_in_list_orders($order)
     $last_name = $order->get_billing_last_name();
     $mensaje_global = get_option( 'msj_global' );
     $cod_area = get_option( 'codigo_de_area' );
+    $pedido = $order->get_id();
 
-    $text_mensaje_global = "Hola $first_name $last_name. $mensaje_global.";
+    $text_mensaje_global = "Pedido Nro.$pedido, $first_name $last_name. $mensaje_global.";
     ?>
 <a id="whatsapp" class="" href="https://api.whatsapp.com/send?phone=<?php echo $cod_area ?><?php echo $number ?>&text=<?php echo $text_mensaje_global; ?>"
 target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span> WhatsApp</a>

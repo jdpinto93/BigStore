@@ -24,25 +24,27 @@ function whatsapp_btn_in_order($order_id){
 
     if (isset($number_clients)) {
         //take the number for order with invitates
-        $order_id->get_id();
+        $pedido = $order_id->get_id();
         $number_invitates = $order_id->get_billing_phone();
         $result = $number_invitates;
     } else {
         $result = $number_clients;
     }
-    $text_validando_pago = "Hola $first_name $last_name. $validando_pago.";
-    $text_procesando_pedido = "Hola $first_name $last_name. $procesando_pedido.";
-    $text_pedido_enviado = "Hola $first_name $last_name. $pedido_enviado";
-    $text_pedido_completado = "Hola $first_name $last_name. $pedido_completado.";
-    $text_pedido_fallido = "Hola $first_name $last_name. $pedido_fallido.";
-    $text_pedido_cancelado = "Hola $first_name $last_name. $pedido_cancelado.";
+    $text_validando_pago = "Pedido Nro.$pedido, $first_name $last_name. $validando_pago.";
+    $text_procesando_pedido = "Pedido Nro.$pedido, $first_name $last_name. $procesando_pedido.";
+    $text_pedido_enviado = "Pedido Nro.$pedido, $first_name $last_name. $pedido_enviado";
+    $text_pedido_completado = "Pedido Nro.$pedido, $first_name $last_name. $pedido_completado.";
+    $text_pedido_fallido = "Pedido Nro.$pedido, $first_name $last_name. $pedido_fallido.";
+    $text_pedido_cancelado = "Pedido Nro.$pedido, $first_name $last_name. $pedido_cancelado.";
 
     
     
     
     ?>
-<p>Enviar WhatsApp:</p>
+
 <div>
+<div>.</div>
+	<p>Enviar WhatsApp:</p>
 <a id="whatsapp" href="https://api.whatsapp.com/send?phone=<?php echo $cod_area; ?><?php echo $result; ?>&text=<?php echo $text_validando_pago; ?>"
     target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span> Validando Pago</a>
 
