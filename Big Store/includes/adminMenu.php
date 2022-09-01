@@ -12,8 +12,8 @@ function crear_menu() {
 
 function output_panel_bigcom() {
 // Crea el menu de opciones de Datos
-include(RAI_RUTA.'/includes/panelBigcom/panelBigcom.php');
+include(Woo_Big_RUTA.'/includes/panelBigcom/panelBigcom.php');
 }
 
 // Crea el menu de opciones de whatsApp
-include(RAI_RUTA.'/includes/subMenus/whatsApp.php');
+include(Woo_Big_RUTA.'/includes/subMenus/whatsApp.php');
