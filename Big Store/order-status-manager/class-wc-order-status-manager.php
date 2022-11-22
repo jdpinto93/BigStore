@@ -377,53 +377,6 @@ class WC_Order_Status_Manager extends Framework\SV_WC_Plugin {
 		return $this->integrations;
 	}
 
-
-	/** Admin methods ******************************************************/
-
-
-	/**
-	 * Render a notice for the user to read the docs before using the plugin
-	 *
-	 * @since 1.0.0
-	 */
-	public function add_admin_notices() {
-
-		// show any dependency notices
-		parent::add_admin_notices();
-
-		$this->get_admin_notice_handler()->add_admin_notice(
-			sprintf(
-				/* translators: 1$s - opening <a> link tag, 2$s - closing </a> link tag */
-				__( 'Thanks for installing Order Status Manager! Before you get started, please take a moment to %1$sread through the documentation%2$s.', 'woocommerce-order-status-manager' ),
-				'<a href="' . $this->get_documentation_url() . '">', '</a>'
-			),
-			'read-the-docs',
-			[
-				'always_show_on_settings' => false,
-				'notice_class'            => 'updated',
-			]
-		);
-
-		if ( 'yes' === get_option( 'wc_order_status_manager_show_paid_pending_status_notice' ) ) {
-
-			$this->get_admin_notice_handler()->add_admin_notice(
-				sprintf(
-					/* translators: Placeholder: %1$s - opening <strong> HTML tag, %2$s - closing </strong> HTML tag, %3$s - opening <a> HTML link tag, %4$s - closing </a> HTML link tag */
-					__( '%1$sHeads up!%2$s Order Status Manager now requires the "Pending Payment" status to only refer to orders that are awaiting payment, to avoid payment processing issues for your orders. We have automatically made this change in the %3$sPending Payment status settings%4$s.', 'woocommerce-order-status-manager' ),
-					'<strong>', '</strong>',
-					'<a href="' . esc_url( $this->get_settings_url() ) . '">', '</a>'
-				),
-				'pending-status-set-to-paid',
-				[
-					'always_show_on_settings' => false,
-					'dismissible'             => true,
-					'notice_class'            => 'notice-warning',
-				]
-			);
-		}
-	}
-
-
 	/** Helper methods ******************************************************/
 
 
