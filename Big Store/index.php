@@ -30,7 +30,7 @@ include(Woo_Big_RUTA.'/wooCambios/woocommerce/envios/envios.php');
 include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/config.php');
 
 // Configuracion de correos en el area de pedidos
-include(Woo_Big_RUTA.'/wooCambios/woocommerce/templates/emails-config-woo.php');
+include(Woo_Big_RUTA.'/wooCambios/woocommerce/emails/emails-config-woo.php');
 
 // Agrega Boton para mensaje al WhatsApp desde las Ordenes de Woocommerce
 include(Woo_Big_RUTA.'/WooWhatsApp/wc-whatsapp.php');
