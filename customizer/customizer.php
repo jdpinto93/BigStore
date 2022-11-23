@@ -1,5 +1,4 @@
 <?php
-
 defined( 'ABSPATH' ) or exit;
 
 // Check if WooCommerce is active
@@ -24,7 +23,7 @@ class WC_Customizer {
 
 
 	/** plugin version number */
-	const VERSION = '2.7.7';
+	const VERSION = '1.1.3';
 
 	/** required WooCommerce version number */
 	const MIN_WOOCOMMERCE_VERSION = '3.9.4';
@@ -49,8 +48,6 @@ class WC_Customizer {
 	 */
 	public function __construct() {
 
-		// load translation
-		add_action( 'init', array( $this, 'load_translation' ) );
 
 		// admin
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
@@ -68,30 +65,6 @@ class WC_Customizer {
 		$this->includes();
 
 		add_action( 'woocommerce_init', array( $this, 'load_customizations' ) );
-	}
-
-
-	/**
-	 * Cloning instances is forbidden due to singleton pattern.
-	 *
-	 * @since 2.3.0
-	 */
-	public function __clone() {
-
-		/* translators: Placeholders: %s - plugin name */
-		_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'You cannot clone instances of %s.', 'woocommerce-customizer' ), 'Customizer for WooCommerce' ), '2.3.0' );
-	}
-
-
-	/**
-	 * Unserializing instances is forbidden due to singleton pattern.
-	 *
-	 * @since 2.3.0
-	 */
-	public function __wakeup() {
-
-		/* translators: Placeholders: %s - plugin name */
-		_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'You cannot unserialize instances of %s.', 'woocommerce-customizer' ), 'Customizer for WooCommerce' ), '2.3.0' );
 	}
 
 
@@ -169,18 +142,6 @@ class WC_Customizer {
 
 
 	/**
-	 * Handle localization, WPML compatible
-	 *
-	 * @since 1.1.0
-	 */
-	public function load_translation() {
-
-		// localization in the init action for WPML support
-		load_plugin_textdomain( 'woocommerce-customizer', false, dirname( plugin_basename( __FILE__ ) ) . '/i18n/languages' );
-	}
-
-
-	/**
 	 * Helper function to determine whether a plugin is active.
 	 *
 	 * @since 2.6.0
@@ -227,7 +188,7 @@ class WC_Customizer {
 
 		$message = sprintf(
 			/* translators: %1$s - <strong>, %2$s - </strong>, %3$s - <a>, %4$s - version number, %5$s - </a> */
-			__( '%1$sCustomizer for WooCommerce is inactive%2$s as it requires WooCommerce. Please %3$sactivate WooCommerce version %4$s or newer%5$s', 'woocommerce-customizer' ),
+			__( '%1$sCustomizer for WooCommerce is inactive%2$s as it requires WooCommerce. Please %3$sactivate WooCommerce version %4$s or newer%5$s', 'BigExpress' ),
 			'<strong>',
 			'</strong>',
 			'<a href="' . admin_url( 'plugins.php' ) . '">',
@@ -248,7 +209,7 @@ class WC_Customizer {
 
 		$message = sprintf(
 			/* translators: Placeholders: %1$s - <strong>, %2$s - </strong>, %3$s - version number, %4$s and %6$s - <a> tags, %5$s - </a> */
-			__( '%1$sCustomizer for WooCommerce is inactive.%2$s This plugin requires WooCommerce %3$s or newer. Please %4$supdate WooCommerce%5$s or %6$srun the WooCommerce database upgrade%5$s.', 'woocommerce-customizer' ),
+			__( '%1$sCustomizer for WooCommerce is inactive.%2$s This plugin requires WooCommerce %3$s or newer. Please %4$supdate WooCommerce%5$s or %6$srun the WooCommerce database upgrade%5$s.', 'BigExpress' ),
 			'<strong>',
 			'</strong>',
 			self::MIN_WOOCOMMERCE_VERSION,
@@ -419,6 +380,27 @@ class WC_Customizer {
 	}
 
 
+	/** Admin methods ******************************************************/
+
+
+	/**
+	 * Return the plugin action links.  This will only be called if the plugin
+	 * is active.
+	 *
+	 * @since 1.0.0
+	 * @param array $actions associative array of action names to anchor tags
+	 * @return array associative array of plugin action links
+	 */
+	public function add_plugin_action_links( $actions ) {
+
+		$custom_actions = array(
+			'Configuracion' => sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=wc-settings&tab=customizer&section=shop_loop' ), __( 'Configuracion', 'BigExpress' ) ),
+			'Contacto'       => sprintf( '<a href="%s">%s</a>', 'https://www.webmasteryagency.com/', __( 'Contacto', 'BigExpress' ) ),
+		);
+
+		// add the links to the front of the actions list
+		return array_merge( $custom_actions, $actions );
+	}
 
 
 	/** Helper methods ******************************************************/
@@ -458,7 +440,7 @@ class WC_Customizer {
 			if ( ! empty ( $child_sale_percents ) ) {
 
 				/* translators: Placeholder: %s - sale percentage */
-				$percentage = count( $child_sale_percents ) > 1 ? sprintf( esc_html__( 'up to %s', 'woocommerce-customizer' ), max( $child_sale_percents ) ) : current( $child_sale_percents );
+				$percentage = count( $child_sale_percents ) > 1 ? sprintf( esc_html__( 'up to %s', 'BigExpress' ), max( $child_sale_percents ) ) : current( $child_sale_percents );
 			}
 
 		} else {

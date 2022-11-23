@@ -1,6 +1,5 @@
 <?php
 
-
 defined( 'ABSPATH' ) or exit;
 
 /**
@@ -53,8 +52,8 @@ class WC_Customizer_Integrations {
 					// insert bundle settings after the grouped product text
 					$new_settings[ $section ][] = array(
 						'id'       => 'bundle_add_to_cart_text',
-						'title'    => __( 'Paquete de productos', 'woocommerce-customizer' ),
-						'desc_tip' => __( 'Cambia el texto del botón Agregar al carrito para paquetes de productos en todas las páginas', 'woocommerce-customizer' ),
+						'title'    => __( 'Bundle Product', 'BigExpress' ),
+						'desc_tip' => __( 'Changes the add to cart button text for bundle products on all loop pages', 'BigExpress' ),
 						'type'     => 'text'
 					);
 				}
