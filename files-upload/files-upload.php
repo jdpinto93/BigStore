@@ -1,13 +1,4 @@
 <?php
-/*
-Plugin Name: Files Upload
-Description: Let your customers upload files on (or after) WooCommerce checkout.
-Version: 2.1.4
-Author: Jose Pinto
-Domain Path: /langs
-License: GNU General Public License v3.0
-*/
-
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
