@@ -107,7 +107,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                         $cost = $weight*20;
 
                     } else {
- 
+                        
                         $cost = $weight*15;
  
                     }
@@ -129,6 +129,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                         'id' => $this->id,
                         'label' => $this->title,
                         'cost' => $cost
+                        'calc_tax' => 'per_item'
                     );
  
                     $this->add_rate( $rate );
