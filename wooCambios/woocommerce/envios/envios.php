@@ -25,12 +25,12 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                     // Availability & Countries
                     $this->availability = 'including';
                     $this->countries = array(
-                        'MX', // Unites States of America
+                        'MX', // Mexico
                         );
  
                     $this->init();
  
-                    $this->enabled = isset( $this->settings['enabled'] ) ? $this->settings['enabled'] : 'yes';
+                    $this->enabled = isset( $this->settings['enabled'] ) ? $this->settings['enabled'] : 'yes';   
                     $this->title = isset( $this->settings['title'] ) ? $this->settings['title'] : __( 'BigExpress Shipping', 'bigmx' );
                 }
  
@@ -80,7 +80,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                      );
  
                 }
- 
                 /**
                  * This function is used to calculate the shipping cost. Within this function we can check for weights, dimensions and other parameters.
                  *
@@ -89,26 +88,34 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                  * @return void
                  */
                 public function calculate_shipping( $package = array() ) {
-                    
+
                     $weight = 0;
+                    $length = 0;
+                    $width = 0;
+                    $height = 0;
                     $cost = 0;
                     $country = $package["destination"]["country"];
+
  
                     foreach ( $package['contents'] as $item_id => $values ) 
                     { 
                         $_product = $values['data']; 
-                        $weight = $weight + $_product->get_weight() * $values['quantity']; 
+                        $weight = $weight + $_product->get_weight() * $values['quantity'];
+                        $length = $_product->get_length();
+                        $width = $_product->get_width();
+                        $height = $_product->get_height();
+                        $dimensions = $length*$width*$width*$values['quantity']/5000;
                     }
+
+                $weight = wc_get_weight( $weight, 'kg' );
  
-                    $weight = wc_get_weight( $weight, 'kg' );
- 
-                    if( $weight <= 10 ) {
+                    if( $dimensions <= $weight ) {
 
                         $cost = $weight*20;
 
-                    } else {
-                        
-                        $cost = $weight*15;
+                    }else{
+ 
+                        $cost = $dimensions;
  
                     }
  
@@ -129,7 +136,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                         'id' => $this->id,
                         'label' => $this->title,
                         'cost' => $cost
-                        'calc_tax' => 'per_item'
                     );
  
                     $this->add_rate( $rate );
