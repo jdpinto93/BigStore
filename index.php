@@ -48,7 +48,7 @@ include(Woo_Big_RUTA.'/includes/adminMenu.php');
 include(Woo_Big_RUTA.'/order-status-manager/woocommerce-order-status-manager.php');
 
 // Crea un menu para controlar el texto de los botones de woocommerce
-include(Woo_Big_RUTA.'/customizer/customizer.php');
+include(Woo_Big_RUTA.'/EdidTextWoo/EdidTextWoo.php');
 
 // Crea un menu para controlar el texto de los botones de woocommerce
 include(Woo_Big_RUTA.'/email-template-customizer/email-template-customizer.php');

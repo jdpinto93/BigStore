@@ -1,4 +1,18 @@
 <?php
+ /**
+ * Plugin Name:       EdidTextWoo
+ * Plugin URI:        http://www.webmasteryagency.com
+ * Description:       Edita los los textos de los botones de woocommerce
+ * Version:           1.1.3
+ * Requires at least: 5.2
+ * Requires PHP:      7.2.2
+ * Author:            Jose Pinto
+ * Author URI:        http://www.webmasteryagency.com
+ * License:           GPL v3 or later
+ * Domain Path: /lang
+ * Text Domain _JPinto
+ */
+
 defined( 'ABSPATH' ) or exit;
 
 // Check if WooCommerce is active
@@ -188,7 +202,7 @@ class WC_Customizer {
 
 		$message = sprintf(
 			/* translators: %1$s - <strong>, %2$s - </strong>, %3$s - <a>, %4$s - version number, %5$s - </a> */
-			__( '%1$sCustomizer for WooCommerce is inactive%2$s as it requires WooCommerce. Please %3$sactivate WooCommerce version %4$s or newer%5$s', 'BigExpress' ),
+			__( '%1$sCustomizer for WooCommerce is inactive%2$s as it requires WooCommerce. Please %3$sactivate WooCommerce version %4$s or newer%5$s', '_JPinto' ),
 			'<strong>',
 			'</strong>',
 			'<a href="' . admin_url( 'plugins.php' ) . '">',
@@ -209,7 +223,7 @@ class WC_Customizer {
 
 		$message = sprintf(
 			/* translators: Placeholders: %1$s - <strong>, %2$s - </strong>, %3$s - version number, %4$s and %6$s - <a> tags, %5$s - </a> */
-			__( '%1$sCustomizer for WooCommerce is inactive.%2$s This plugin requires WooCommerce %3$s or newer. Please %4$supdate WooCommerce%5$s or %6$srun the WooCommerce database upgrade%5$s.', 'BigExpress' ),
+			__( '%1$sCustomizer for WooCommerce is inactive.%2$s This plugin requires WooCommerce %3$s or newer. Please %4$supdate WooCommerce%5$s or %6$srun the WooCommerce database upgrade%5$s.', '_JPinto' ),
 			'<strong>',
 			'</strong>',
 			self::MIN_WOOCOMMERCE_VERSION,
@@ -394,8 +408,8 @@ class WC_Customizer {
 	public function add_plugin_action_links( $actions ) {
 
 		$custom_actions = array(
-			'Configuracion' => sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=wc-settings&tab=customizer&section=shop_loop' ), __( 'Configuracion', 'BigExpress' ) ),
-			'Contacto'       => sprintf( '<a href="%s">%s</a>', 'https://www.webmasteryagency.com/', __( 'Contacto', 'BigExpress' ) ),
+			'Configuracion' => sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=wc-settings&tab=customizer&section=shop_loop' ), __( 'Configuracion', '_JPinto' ) ),
+			'Contacto'       => sprintf( '<a href="%s">%s</a>', 'https://www.webmasteryagency.com/', __( 'Contacto', '_JPinto' ) ),
 		);
 
 		// add the links to the front of the actions list
@@ -440,7 +454,7 @@ class WC_Customizer {
 			if ( ! empty ( $child_sale_percents ) ) {
 
 				/* translators: Placeholder: %s - sale percentage */
-				$percentage = count( $child_sale_percents ) > 1 ? sprintf( esc_html__( 'up to %s', 'BigExpress' ), max( $child_sale_percents ) ) : current( $child_sale_percents );
+				$percentage = count( $child_sale_percents ) > 1 ? sprintf( esc_html__( 'up to %s', '_JPinto' ), max( $child_sale_percents ) ) : current( $child_sale_percents );
 			}
 
 		} else {
