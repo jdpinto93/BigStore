@@ -42,7 +42,7 @@ include(Woo_Big_RUTA.'/WooWhatsApp/wc-whatsapp.php');
 include(Woo_Big_RUTA.'/GoogleReviews/google-customer-reviews.php');
 
 // Agrega la ventana modal del carrito de woocommerce en el frontend
-include(Woo_Big_RUTA.'/CartPopup/jp-cp-main.php');
+//include(Woo_Big_RUTA.'/CartPopup/jp-cp-main.php');
 
 // Crea el menu de opciones
 include(Woo_Big_RUTA.'/includes/adminMenu.php');
