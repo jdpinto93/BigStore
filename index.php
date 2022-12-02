@@ -24,6 +24,9 @@ define( 'Woo_Big_URL', plugin_dir_url( __FILE__ ) );
 // Archivos Externos
 
 //Crea un metodo de envios para Woocommerce
+include(Woo_Big_RUTA.'/multipleAddresses/multipleAddresses.php');
+
+//Crea un metodo de envios para Woocommerce
 include(Woo_Big_RUTA.'/wooCambios/woocommerce/envios/envios.php');
 
 //Crea campos para los productos de woocommerce
@@ -91,15 +94,15 @@ add_action('wp_enqueue_scripts', 'styele_proyect_front');
 //Oculta los menu de administracion para limpiar el escritorio
 
 function remove_menus(){
-	remove_menu_page( 'jp_cp' );          //PopUp Carrito
+	//remove_menu_page( 'jp_cp' );          //PopUp Carrito
     remove_menu_page( 'edit-comments.php' );        //Comentarios
 	remove_menu_page( 'upload.php' );                 //Media
-    remove_menu_page( 'themes.php' );               //Appearance
-    remove_menu_page( 'plugins.php' );              //Plugins
+   // remove_menu_page( 'themes.php' );               //Appearance
+   // remove_menu_page( 'plugins.php' );              //Plugins
     remove_menu_page( 'users.php' );                //Users
-    remove_menu_page( 'edit.php' );                 //Entradas
-    remove_menu_page( 'tools.php' );                //Herramientas
-    remove_menu_page( 'options-general.php' );      //Ajustes
+  //  remove_menu_page( 'edit.php' );                 //Entradas
+  //  remove_menu_page( 'tools.php' );                //Herramientas
+   // remove_menu_page( 'options-general.php' );      //Ajustes
     remove_menu_page( 'edit.php?post_type=page' );  //Paginas
   }
 add_action( 'admin_menu', 'remove_menus' );
