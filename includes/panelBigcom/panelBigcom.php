@@ -1,7 +1,5 @@
-<?php
+<?php echo '<h1> Bienvenidos al panel de administracion </h1>'; ?>
 
-echo '<h1> Bienvenidos al panel de administracion </h1>';
-?>
 <br>
 
 <div>
