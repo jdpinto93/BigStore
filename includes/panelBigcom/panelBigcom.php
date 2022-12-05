@@ -94,34 +94,3 @@ echo '<h1> Bienvenidos al panel de administracion </h1>';
     </div>
   </div>
 </div>
-
-<br>
-
-<div>
-  <div class="contenTarjetas">
-
-    <div class="tarjetasAdmin">
-    <img src="https://s3-bigcom.s3.amazonaws.com/bigStore/javascript.png" class="img-thumbnail border-0" alt="...">
-  <div class="infotarjeta">
-    <h3 class="titleAdmin">Agregar Javascript</h3><br>
-    <a href="plugin-editor.php?file=Big+Store%2FassetesFront%2FmainFront.js&plugin=Big+Store%2Findex.php" class="botonTarjetas">Agregar Javascript</a>
-  </div>
-    </div>
-
-    <div class="tarjetasAdmin">
-    <img src="https://s3-bigcom.s3.amazonaws.com/bigStore/php.png" class="img-thumbnail border-0" alt="...">
-  <div class="infotarjeta">
-    <h3  class="titleAdmin">Agregar PHP</h3><br>
-    <a href="plugin-editor.php?file=Big+Store%2FassetesFront%2Ffunctions.php&plugin=Big+Store%2Findex.php" class="botonTarjetas">Agregar PHP</a>
-  </div>
-    </div>
-
-    <div class="tarjetasAdmin">
-    <img src="https://s3-bigcom.s3.amazonaws.com/bigStore/css.png" class="img-thumbnail border-0" alt="...">
-  <div class="infotarjeta">
-    <h3  class="titleAdmin">Agregar css</h3><br>
-    <a href="plugin-editor.php?file=Big+Store%2FassetesFront%2FstyleFront.css&plugin=Big+Store%2Findex.php" class="botonTarjetas">Agregar css</a>
-  </div>
-    </div>
-  </div>
-</div>
