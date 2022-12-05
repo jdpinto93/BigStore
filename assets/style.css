@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+#toplevel_page_side-cart-woocommerce-settings{
+    display: none;
+}
+
 .tarjetasAdmin{
     background-color: #ffffff;
     padding: 20px;

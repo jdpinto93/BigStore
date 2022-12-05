@@ -3,7 +3,7 @@
  * Plugin Name:       Big Store
  * Plugin URI:        http://www.webmasteryagency.com
  * Description:       Estructura de la eCommerce Bigcom ajustada a Woocommerce, Este plugins registra todos los campos necesarios para que Bigcom pueda funcionar de forma optima.
- * Version:           1.1.3
+ * Version:           1.1.4
  * Requires at least: 5.2
  * Requires PHP:      7.2.2
  * Author:            Jose Pinto
@@ -42,7 +42,7 @@ include(Woo_Big_RUTA.'/WooWhatsApp/wc-whatsapp.php');
 include(Woo_Big_RUTA.'/GoogleReviews/google-customer-reviews.php');
 
 // Agrega la ventana modal del carrito de woocommerce en el frontend
-//include(Woo_Big_RUTA.'/CartPopup/jp-cp-main.php');
+include(Woo_Big_RUTA.'/side-cart/cart-main.php');
 
 // Crea el menu de opciones
 include(Woo_Big_RUTA.'/includes/adminMenu.php');
@@ -94,7 +94,6 @@ add_action('wp_enqueue_scripts', 'styele_proyect_front');
 //Oculta los menu de administracion para limpiar el escritorio
 
 function remove_menus(){
-	remove_menu_page( 'jp_cp' );          //PopUp Carrito
     remove_menu_page( 'edit-comments.php' );        //Comentarios
 	remove_menu_page( 'upload.php' );                 //Media
     remove_menu_page( 'themes.php' );               //Appearance

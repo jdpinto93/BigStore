@@ -15,13 +15,13 @@ class WhatsApp_Settings_Page {
 
 	public function wph_create_settings() {
 		$page_title = 'whatsApp';
-		$menu_title = 'Msj de whatsApp';
+		$menu_title = 'Ajustes whatsApp';
 		$capability = 'manage_options';
 		$slug = 'WhatsApp';
 		$callback = array($this, 'wph_settings_content');
                 $icon = 'dashicons-admin-customizer';
 		$position = 2;
-		add_submenu_page('bigcom-panel', $page_title, $menu_title, $capability, $slug, $callback, $icon, $position);
+		add_options_page($page_title, $menu_title, $capability, $slug, $callback, $icon, $position);
 		
 	}
     

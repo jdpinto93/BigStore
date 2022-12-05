@@ -27,7 +27,7 @@ echo '<h1> Bienvenidos al panel de administracion </h1>';
     <img src="https://s3-bigcom.s3.amazonaws.com/bigStore/wooCart.png" class="img-thumbnail border-0" alt="...">
   <div class="infotarjeta">
     <h3  class="titleAdmin">Configuración de Carrito</h3><br>
-    <a href="admin.php?page=jp_cp" class="botonTarjetas">Configurar Carrito</a>
+    <a href="admin.php?page=side-cart-woocommerce-settings" class="botonTarjetas">Configurar Carrito</a>
   </div>
     </div>
   </div>

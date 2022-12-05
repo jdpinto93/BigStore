@@ -79,7 +79,7 @@ class THWCFE_Admin {
 	
 	public function admin_menu() {
 		$capability = THWCFE_Utils::wcfe_capability();
-		$this->screen_id = add_submenu_page('woocommerce', THWCFE_i18n::t('WooCommerce Checkout Field Editor Pro'), THWCFE_i18n::t('Checkout Form'), $capability, 'th_checkout_field_editor_pro', array($this, 'output_settings'));
+		$this->screen_id = add_options_page(THWCFE_i18n::t('WooCommerce Checkout Field Editor Pro'), THWCFE_i18n::t('Checkout Form'), $capability, 'th_checkout_field_editor_pro', array($this, 'output_settings'));
 	}
 	
 	public function add_screen_id($ids){

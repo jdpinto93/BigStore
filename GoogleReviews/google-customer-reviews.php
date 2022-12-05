@@ -44,7 +44,7 @@ function ecr_gcr_missing_key_notice() {
 add_action( 'admin_menu', 'ecr_gcr_menu' );
 function ecr_gcr_menu(){
   add_options_page( 'Google Customer Reviews for WooCommerce',
-                'Google Customer Reviews', 
+                'Google Reviews', 
                 'manage_options', 
                 'ecr_gcr', 
                 'ecr_gcr_page' );
