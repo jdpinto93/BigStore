@@ -37,6 +37,9 @@ include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/categoria/categoria.php'
 // Agrega un campo de editor al producto la ficha de producto de woocommerce que es capaz de leer la biblioteca de medios
 include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/pdfProduct/pdfProduct.php');
 
+// Agrega un campo de editor al producto la ficha de producto de woocommerce que es capaz de leer la biblioteca de medios
+//include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/hightligyhProduct/higthlight.php');
+
 // Elimina las imagenes de los productos cuando el mismo es eliminado
 include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/delete-product-images/wdpi.php');
 
