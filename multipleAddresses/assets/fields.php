@@ -746,7 +746,7 @@ acf_add_local_field_group(array(
 			array(
 				'param' => 'options_page',
 				'operator' => '==',
-				'value' => 'acf-options-multiple-customer-addresses-options',
+				'value' => 'wcmca-option-menu',
 			),
 		),
 	),
@@ -1289,7 +1289,7 @@ acf_add_local_field_group(array(
 			array(
 				'param' => 'options_page',
 				'operator' => '==',
-				'value' => 'acf-options-multiple-customer-addresses-options',
+				'value' => 'wcmca-option-menu',
 			),
 		),
 	),

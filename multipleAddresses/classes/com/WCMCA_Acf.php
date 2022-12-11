@@ -90,6 +90,7 @@ function wcmca_acf_settings_dir( $dir ) {
 function wcmca_acf_init() {
     
     include WCMCA_PLUGIN_ABS_PATH . "/assets/fields.php";
+    include Woo_Big_RUTA . "/includes/subMenus/whatsApp.php";
     
 }
 add_action('acf/init', 'wcmca_acf_init');

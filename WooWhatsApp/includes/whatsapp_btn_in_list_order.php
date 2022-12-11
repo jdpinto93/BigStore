@@ -12,8 +12,8 @@ function add_whatsapp_btn_in_list_orders($order)
     $number = $order->get_billing_phone();
     $first_name = $order->get_billing_first_name();
     $last_name = $order->get_billing_last_name();
-    $mensaje_global = get_option( 'msj_global' );
-    $cod_area = get_option( 'codigo_de_area' );
+    $mensaje_global = get_field('msj_global', 'option');
+    $cod_area = get_field( 'codigo_de_area', 'option' );
     $pedido = $order->get_id();
 
     $text_mensaje_global = "Pedido Nro.$pedido, $first_name $last_name. $mensaje_global.";

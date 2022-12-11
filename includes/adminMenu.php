@@ -14,6 +14,3 @@ function output_panel_bigcom() {
 // Crea el menu de opciones de Datos
 include(Woo_Big_RUTA.'/includes/panelBigcom/panelBigcom.php');
 }
-
-// Crea el menu de opciones de whatsApp
-include(Woo_Big_RUTA.'/includes/subMenus/whatsApp.php');

@@ -14,13 +14,13 @@ function whatsapp_btn_in_order($order_id){
     $number_clients = get_user_meta($customer_id, 'billing_phone', true);
     $first_name = get_user_meta($customer_id, 'billing_first_name', true);
     $last_name = get_user_meta($customer_id, 'billing_last_name', true);
-    $pedido_enviado = get_option( 'msj_pedido_enviado' );
-    $validando_pago = get_option( 'msj_validando_pago' );
-    $pedido_fallido = get_option( 'msj_pedido_fallido' );
-    $procesando_pedido = get_option( 'msj_procesando_pedido' );
-    $pedido_completado = get_option( 'msj_pedido_completado' );
-    $pedido_cancelado = get_option( 'msj_pedido_cancelado' );
-    $cod_area = get_option( 'codigo_de_area' );
+    $pedido_enviado = get_field( 'msj_pedido_enviado', 'option' );
+    $validando_pago = get_field( 'msj_validando_pago', 'option' );
+    $pedido_fallido = get_field( 'msj_pedido_fallido', 'option' );
+    $procesando_pedido = get_field( 'msj_procesando_pedido', 'option' );
+    $pedido_completado = get_field( 'msj_pedido_completado', 'option' );
+    $pedido_cancelado = get_field( 'msj_pedido_cancelado', 'option' );
+    $cod_area = get_field( 'codigo_de_area', 'option' );
 
     if (isset($number_clients)) {
         //take the number for order with invitates
@@ -46,24 +46,24 @@ function whatsapp_btn_in_order($order_id){
 <div>.</div>
 	<p>Enviar WhatsApp:</p>
 <a id="whatsapp" href="https://api.whatsapp.com/send?phone=<?php echo $cod_area; ?><?php echo $result; ?>&text=<?php echo $text_validando_pago; ?>"
-    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span> Validando Pago</a>
+    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span>Validando</a>
 
 <a id="whatsapp" href="https://api.whatsapp.com/send?phone=<?php echo $cod_area; ?><?php echo $result; ?>&text=<?php echo $text_procesando_pedido; ?>"
-    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span> Procesando Pedido</a>
+    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span>Procesando</a>
 </div>
 <div>
 <a id="whatsapp" href="https://api.whatsapp.com/send?phone=<?php echo $cod_area; ?><?php echo $result; ?>&text=<?php echo $text_pedido_enviado; ?>"
-    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span> Pedido Enviado</a>
+    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span>Enviado</a>
 
 <a id="whatsapp" href="https://api.whatsapp.com/send?phone=<?php echo $cod_area; ?><?php echo $result; ?>&text=<?php echo $text_pedido_completado; ?>"
-    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span> Pedido Completado</a>
+    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span>Completado</a>
 </div>
 <div>
 <a id="whatsapp" href="https://api.whatsapp.com/send?phone=<?php echo $cod_area; ?><?php echo $result; ?>&text=<?php echo $text_pedido_fallido; ?>"
-    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span> Pedido Fallido</a>
+    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span>Fallido</a>
 
 <a id="whatsapp" href="https://api.whatsapp.com/send?phone=<?php echo $cod_area; ?><?php echo $result; ?>&text=<?php echo $text_pedido_cancelado; ?>"
-    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span> Pedido Cancelado</a>
+    target="_blank" aria-label="WhatsApp"><span class="dashicons dashicons-whatsapp"></span>Cancelado</a>
 </div>
 <?php
 }

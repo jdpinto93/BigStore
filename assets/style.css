@@ -11,6 +11,10 @@
     display: none;
 }
 
+#wcmca_edit_order_item_container{
+    display: none!important;
+}
+
 .tarjetasAdmin{
     background-color: #ffffff;
     padding: 20px;

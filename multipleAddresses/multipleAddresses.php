@@ -69,7 +69,7 @@ function wcmca_setup()
 	global $wcmca_wpml_helper, $wcmca_html_helper, $wcmca_customer_model, $wcmca_address_model, $wcmca_order_model, $wcmca_email_model,
 		   $wcmca_option_model, $wcmca_cart_model, $wcmca_session_model, $wcmca_my_account_page_addon, $wcmca_checkout_page_addon, 
 		   $wcmca_frontend_order_details_page_addon, $wcmca_emails_addon, $wcmca_shop_page_addon, $wcmca_admin_order_details_page_addon,
-		   $wcmca_option_page, $wcmca_user_profile_page;
+		   $wcmca_option_page, $whatsapp_option_page, $wcmca_user_profile_page;
 		   
 	if(!class_exists('WCMCA_Wpml'))
 	{
@@ -157,6 +157,11 @@ function wcmca_setup()
 	{
 		require_once('classes/admin/WCMCA_OptionPage.php');
 		$wcmca_option_page = new WCMCA_OptionPage();
+	}
+	if(!class_exists('WhatsApp_OptionPage'))
+	{
+		require_once('classes/admin/WhatsApp_Optionpage.php');
+		$whatsapp_option_page = new WhatsApp_OptionPage;
 	}
 	if(!class_exists('WCMCA_UserProfilePage'))
 	{

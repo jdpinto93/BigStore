@@ -1,5 +1,5 @@
-<?php 
-class WCMCA_OptionPage
+<?php
+class WhatsApp_OptionPage
 {
 	public function __construct()
 	{
@@ -10,12 +10,12 @@ class WCMCA_OptionPage
 		if( function_exists('acf_add_options_page') ) 
 		{
 			acf_add_options_page(array(
-				'page_title' 	=> 'Ajustes a Campos de Varias direcciones para un cliente',
-				'menu_title'	=> 'Direcciones',
-				'menu_slug' 	=> 'wcmca-option-menu',
+				'page_title' 	=> 'Ajustes de Mensajes deWhatsApp',
+				'menu_title'	=> 'Ajestes de WhatsApp',
+				'menu_slug' 	=> 'option-menu-whatsApp',
 				'capability'	=> 'edit_posts',
 				'parent_slug'	=> 'options-general.php',
-				'update_button' => __('Guardar', 'acf'),
+				'update_button' => __('Actualizar Mensajes', 'acf'),
 				'redirect'		=> false
 			));
 
@@ -25,7 +25,7 @@ class WCMCA_OptionPage
 	}
 	function switch_language()
 	{
-		if(wcmca_get_value_if_set($_GET, 'page', "") == 'acf-wcmca-option-menu')
+		if(wcmca_get_value_if_set($_GET, 'page', "") == 'acf-option-menu-whatsApp')
 		{
 			global $wcmca_wpml_helper;
 			$wcmca_wpml_helper->switch_to_default_language();
@@ -42,7 +42,7 @@ class WCMCA_OptionPage
 	 //wcmca_var_dump($current_screen->id);
 	  
 	  $page_ids = array(
-		"woocommerce_page_acf-wcmca-option-menu"
+		"woocommerce_page_acf-option-menu-whatsApp"
 	  );
 	  //wcmca_var_dump($current_screen->id);
 	  if (in_array($current_screen->id, $page_ids)) 
@@ -59,3 +59,4 @@ class WCMCA_OptionPage
 	  return acf_get_setting('default_language');
 	}
 }
+?>

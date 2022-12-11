@@ -4,7 +4,7 @@ a#whatsapp {
     justify-content: baseline;
     text-align: center;
     text-decoration: none;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 2;
     min-height: 30px;
     padding: 0 2px;
@@ -15,8 +15,8 @@ a#whatsapp {
     border-radius: 3px;
     white-space: nowrap;
     box-sizing: border-box;
-    width: 48%;
-    margin: 2px;
+    width: 49%;
+    margin: 1px;
     float: left;
 }
 a#whatsapp:hover {

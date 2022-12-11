@@ -9,7 +9,7 @@
     <img src="https://s3-bigcom.s3.amazonaws.com/bigStore/whatsAppLogo.png" class="img-thumbnail border-0" alt="...">
   <div class="infotarjeta">
     <h3 class="titleAdmin">Configuracion de WhatsApp</h3><br>
-    <a href="admin.php?page=WhatsApp" class="botonTarjetas">Configurar WhatsApp</a>
+    <a href="options-general.php?page=option-menu-whatsApp" class="botonTarjetas">Configurar WhatsApp</a>
   </div>
     </div>
 
