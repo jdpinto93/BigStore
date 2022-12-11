@@ -101,7 +101,7 @@ function remove_menus(){
     remove_menu_page( 'users.php' );                //Users
     remove_menu_page( 'edit.php' );                 //Entradas
     remove_menu_page( 'tools.php' );                //Herramientas
-    remove_menu_page( 'options-general.php' );      //Ajustes
+   // remove_menu_page( 'options-general.php' );      //Ajustes
  //   remove_menu_page( 'edit.php?post_type=page' );  //Paginas
   }
 add_action( 'admin_menu', 'remove_menus' );
