@@ -169,9 +169,9 @@ class WCMCA_Html
 			'confirm_duplicate_message' => esc_attr__('Address will be duplicated, are you sure?','woocommerce-multiple-customer-addresses')
 		);
 		$address_form_ui_js_options = array( 
-			'state_string' => esc_attr__('State','woocommerce-multiple-customer-addresses'),
-			'postcode_string' => esc_attr__('Postcode / ZIP','woocommerce-multiple-customer-addresses'),
-			'city_string' => esc_attr__('City','woocommerce-multiple-customer-addresses')
+			'state_string' => esc_attr__('Estado','woocommerce-multiple-customer-addresses'),
+			'postcode_string' => esc_attr__('Codigo Postal','woocommerce-multiple-customer-addresses'),
+			'city_string' => esc_attr__('Ciudad','woocommerce-multiple-customer-addresses')
 		);
 		
 		wp_localize_script( 'wcmca-additional-addresses', 'wcmca_address_form', $additional_js_options );
@@ -203,7 +203,7 @@ class WCMCA_Html
 		
 		if(is_admin() && $no_addresses_available):
 		?>
-			<h2><?php esc_html_e('This user has no saved addresses!','woocommerce-multiple-customer-addresses'); ?></h2>
+			<h2><?php esc_html_e('Este usuario no tiene direcciones guardadas!','woocommerce-multiple-customer-addresses'); ?></h2>
 		<?php 
 		endif;
 		
@@ -214,7 +214,7 @@ class WCMCA_Html
 				<div class="u-column1 col-1 woocommerce-Address">
 					<?php if($user_can_add_new_billing_addresses): 
 							if(!$is_order_edit): ?>
-							<a href="#wcmca_address_form_container_billing" class="button wcmca_add_new_address_button" id="wcmca_add_new_address_button_billing"><?php esc_html_e('Add new billing address','woocommerce-multiple-customer-addresses'); ?></a>
+							<a href="#wcmca_address_form_container_billing" class="button wcmca_add_new_address_button" id="wcmca_add_new_address_button_billing"><?php esc_html_e('Añadir Nueva Direccion de Facturacion','woocommerce-multiple-customer-addresses'); ?></a>
 							<?php endif; ?>
 							<div class="wcmca_loader_container">
 								<img class="wcmca_saving_loader_image" src="<?php echo WCMCA_PLUGIN_PATH.'/img/loader.gif' ?>" ></img>
@@ -228,7 +228,7 @@ class WCMCA_Html
 				<div class="u-column2 col-2 woocommerce-Address">
 					<?php if($user_can_add_new_shipping_addresses): ?>
 						<?php if(!$is_order_edit): ?>
-						<a href="#wcmca_address_form_container_shipping" class="button wcmca_add_new_address_button" id="wcmca_add_new_address_button_shipping"><?php esc_html_e('Add new shipping address','woocommerce-multiple-customer-addresses'); ?></a>
+						<a href="#wcmca_address_form_container_shipping" class="button wcmca_add_new_address_button" id="wcmca_add_new_address_button_shipping"><?php esc_html_e('Añadir Nueva Direccion de Envio','woocommerce-multiple-customer-addresses'); ?></a>
 						<?php endif; ?>
 						<div class="wcmca_loader_container">
 							<img class="wcmca_saving_loader_image" src="<?php echo WCMCA_PLUGIN_PATH.'/img/loader.gif' ?>" ></img>
@@ -302,14 +302,14 @@ class WCMCA_Html
 									'class'      => array( 'form-row-wide' ),
 									'required'   => true,
 									'input_class' => array('not_empty' ,'wcmca_input_field'),
-									'label'      => esc_html__('Identifier / Name (Examples: "Office address," "Mary Jones," "MJ 2145," etc.)','woocommerce-multiple-customer-addresses'),
+									'label'      => esc_html__('Identificador de Direccion (Ejemplo Oficina)','woocommerce-multiple-customer-addresses'),
 									'label_class' => array( 'wcmca_form_label' ),
 									'custom_attributes'    => array('required' => 'required'),
 									)
 									);
 								
 						//Is default checkbox
-						$default_address_label = $type == "shipping" ? esc_html__('Make this address the default shipping address','woocommerce-multiple-customer-addresses'): esc_html__('Make this address the default billing address','woocommerce-multiple-customer-addresses');
+						$default_address_label = $type == "shipping" ? esc_html__('Dejar esta direccion por defecto','woocommerce-multiple-customer-addresses'): esc_html__('Dejar esta direccion por defecto','woocommerce-multiple-customer-addresses');
 						if(get_current_user_id() > 0) //in case of product shipping address for guest
 							woocommerce_form_field('wcmca_'.$type.'_is_default_address', array(
 									'type'       => 'checkbox',
@@ -341,7 +341,7 @@ class WCMCA_Html
 									'class'      => array( 'form-row-first' ),
 									'input_class' => array('wcmca-country-select2', 'not_empty'),
 									'required'   => true,
-									'label'      => esc_html__('Select a country','woocommerce-multiple-customer-addresses'),
+									'label'      => esc_html__('Pais','woocommerce-multiple-customer-addresses'),
 									'label_class' => array( 'wcmca_form_label' ),
 									//placeholder'    => esc_html__('Select a country','woocommerce-multiple-customer-addresses'),
 									'options'    => $countries,
@@ -448,7 +448,7 @@ class WCMCA_Html
 						?>
 						
 						<p class="wcmca_save_address_button_container">
-							<button class="button" class="wcmca_save_address_button" id="wcmca_save_address_button_<?php echo $type; ?>"><?php esc_html_e('Save','woocommerce-multiple-customer-addresses'); ?></button>
+							<button class="button" class="wcmca_save_address_button" id="wcmca_save_address_button_<?php echo $type; ?>"><?php esc_html_e('Guardar Direccion','woocommerce-multiple-customer-addresses'); ?></button>
 							<img class="wcmca_preloader_image" id="wcmca_validation_loader_<?php echo $type; ?>" src="<?php echo WCMCA_PLUGIN_PATH.'/img/loader.gif' ?>" ></img>
 						</p>
 					</div>
@@ -508,9 +508,9 @@ class WCMCA_Html
 			'ajax_url' => admin_url('admin-ajax.php')
 		);
 		$address_form_ui_js_options = array( 
-			'state_string' => esc_attr__('State','woocommerce-multiple-customer-addresses'),
-			'postcode_string' => esc_attr__('Postcode / ZIP','woocommerce-multiple-customer-addresses'),
-			'city_string' => esc_attr__('City','woocommerce-multiple-customer-addresses')
+			'state_string' => esc_attr__('Estado','woocommerce-multiple-customer-addresses'),
+			'postcode_string' => esc_attr__('Codigo Postal','woocommerce-multiple-customer-addresses'),
+			'city_string' => esc_attr__('Ciudad','woocommerce-multiple-customer-addresses')
 		);
 		
 		wp_localize_script( 'wcmca-address-form', 'wcmca_address_form', $additional_js_options );
@@ -536,13 +536,13 @@ class WCMCA_Html
 		?>
 		
 		<p class="form-row form-row wcmca_address_selector_container">
-			<label><?php esc_html_e('Select an address','woocommerce-multiple-customer-addresses'); ?></label>
+			<label><?php esc_html_e('Seleccione una dirección','woocommerce-multiple-customer-addresses'); ?></label>
 			<select class="wcmca_address_select_menu" data-type="<?php echo $type; ?>" id="wcmca_address_select_menu_<?php echo $type; ?>" name="wcmca_<?php echo $type; ?>_selected_address_id">
 				<?php $this->create_options_for_main_address_selector($type, $addresses); ?>
 			</select>
 			<!-- #wcmca_custom_addresses -->
 			<?php if($user_can_add_new_addresses): ?>
-			<a href="#wcmca_address_form_container_<?php echo $type; ?>" id="wcmca_add_new_address_button_<?php echo $type; ?>" data-associated-selector="wcmca_address_select_menu_<?php echo $type; ?>" class ="button wcmca_add_new_address_button"><?php esc_html_e('Add new address','woocommerce-multiple-customer-addresses'); ?></a>
+			<a href="#wcmca_address_form_container_<?php echo $type; ?>" id="wcmca_add_new_address_button_<?php echo $type; ?>" data-associated-selector="wcmca_address_select_menu_<?php echo $type; ?>" class ="button wcmca_add_new_address_button"><?php esc_html_e('Añadir Nueva Direccion','woocommerce-multiple-customer-addresses'); ?></a>
 			<?php endif; ?>
 		</p>
 		<p>
@@ -674,10 +674,10 @@ class WCMCA_Html
 				<?php if($shipping_per_product_related_options['display_add_billing_address_button'] || $shipping_per_product_related_options['display_add_shipping_address_button'] ): ?>
 				<div class="wcmca_add_new_address_buttons_container">
 					<?php if($shipping_per_product_related_options['display_add_billing_address_button'] && !$field_managment_options['disable_user_billing_addresses_editing_capabilities'] && $user_can_add_new_billing_addresses): ?>
-						<a href="#wcmca_address_form_container_billing" class="button wcmca_add_new_address_button" data-associated-selector="wcmca_product_address_select_menu_<?php echo $type."_".$item_cart_id; ?>" ><?php esc_html_e('Add new billing address','woocommerce-multiple-customer-addresses'); ?></a>
+						<a href="#wcmca_address_form_container_billing" class="button wcmca_add_new_address_button" data-associated-selector="wcmca_product_address_select_menu_<?php echo $type."_".$item_cart_id; ?>" ><?php esc_html_e('Añadir Nueva Direccion de Facturacion','woocommerce-multiple-customer-addresses'); ?></a>
 					<?php endif; 
 					if($shipping_per_product_related_options['display_add_shipping_address_button'] && !$field_managment_options['disable_user_shipping_addresses_editing_capabilities'] && $user_can_add_new_shipping_addresses):?>
-						<a href="#wcmca_address_form_container_shipping" class="button wcmca_add_new_address_button" data-associated-selector="wcmca_product_address_select_menu_<?php echo $type."_".$item_cart_id; ?>" ><?php esc_html_e('Add new shipping address','woocommerce-multiple-customer-addresses'); ?></a>
+						<a href="#wcmca_address_form_container_shipping" class="button wcmca_add_new_address_button" data-associated-selector="wcmca_product_address_select_menu_<?php echo $type."_".$item_cart_id; ?>" ><?php esc_html_e('Añadir Nueva Direccion de Envio','woocommerce-multiple-customer-addresses'); ?></a>
 					<?php endif; ?>
 				</div>
 				<?php endif; ?>
@@ -707,9 +707,9 @@ class WCMCA_Html
 						<option value="none"><?php esc_html_e('Select an address','woocommerce-multiple-customer-addresses'); ?></option>
 					<?php else: ?>
 						<?php if($type == 'shipping'): ?>
-							<option value="last_used_<?php echo $type; ?>"><?php esc_html_e('Shipping address used for the previous order','woocommerce-multiple-customer-addresses'); ?></option>
+							<option value="last_used_<?php echo $type; ?>"><?php esc_html_e('Dirección de facturación utilizada para el pedido anterior','woocommerce-multiple-customer-addresses'); ?></option>
 						<?php else: ?>
-							<option value="last_used_<?php echo $type; ?>"><?php esc_html_e('Billing address used for the previous order','woocommerce-multiple-customer-addresses'); ?></option>
+							<option value="last_used_<?php echo $type; ?>"><?php esc_html_e('Dirección de facturación utilizada para el pedido anterior','woocommerce-multiple-customer-addresses'); ?></option>
 						<?php endif; ?>
 					<?php endif; ?>
 			<?php endif;
@@ -737,14 +737,14 @@ class WCMCA_Html
 		<?php endif;
 				$pre_selected_address_id = "last_used_".$type ?>
 				<?php if($type == 'shipping'):  ?>
-					<!-- <option value="<?php echo $item_cart_id."-||-";?>last_used_<?php echo $type; ?>"><?php esc_html_e('Shipping address used for the previous order','woocommerce-multiple-customer-addresses'); ?></option> -->
+					<!-- <option value="<?php echo $item_cart_id."-||-";?>last_used_<?php echo $type; ?>"><?php esc_html_e('Dirección de Envio utilizada para el pedido anterior','woocommerce-multiple-customer-addresses'); ?></option> -->
 				<?php else: ?>
-					<!-- <option value="<?php echo $item_cart_id."-||-";?>last_used_<?php echo $type; ?>"><?php esc_html_e('Billing address used for the previous order','woocommerce-multiple-customer-addresses'); ?></option>-->
+					<!-- <option value="<?php echo $item_cart_id."-||-";?>last_used_<?php echo $type; ?>"><?php esc_html_e('Dirección de facturación utilizada para el pedido anterior','woocommerce-multiple-customer-addresses'); ?></option>-->
 				<?php endif; ?>
 		<?php 
 			if(!empty($addresses['billing']) && !$addresse_type_disabled['billing'])
 			{
-				echo '<optgroup label="'.esc_html__('Billing addresses','woocommerce-multiple-customer-addresses').'">';
+				echo '<optgroup label="'.esc_html__('Direcciones de Facturación','woocommerce-multiple-customer-addresses').'">';
 				foreach( $addresses['billing'] as $index => $address)
 				{
 					$address_id = $address['address_id'];
@@ -761,7 +761,7 @@ class WCMCA_Html
 			
 			if(!empty($addresses['shipping']) && !$addresse_type_disabled['shipping'])
 			{
-				echo '<optgroup label="'.esc_html__('Shipping addresses','woocommerce-multiple-customer-addresses').'">';
+				echo '<optgroup label="'.esc_html__('Direcciones de Envio','woocommerce-multiple-customer-addresses').'">';
 				foreach( $addresses['shipping'] as $address_id => $address)
 				{
 					if(isset($address['address_internal_name']) )
