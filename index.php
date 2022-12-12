@@ -105,3 +105,8 @@ function remove_menus(){
  //   remove_menu_page( 'edit.php?post_type=page' );  //Paginas
   }
 add_action( 'admin_menu', 'remove_menus' );
+
+function my_child_theme_setup() {
+    load_child_theme_textdomain( 'woocommerce-multiple-customer-addresses', Woo_Big_RUTA . '/languages' );
+}
+add_action( 'after_setup_theme', 'my_child_theme_setup' );

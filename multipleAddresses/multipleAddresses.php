@@ -1,15 +1,4 @@
 <?php 
-/*
-Plugin Name: WooCommerce Multiple Customer Addresses & Shipping
-Description: Manage multiple customers shipping and billing addresses and multiple shippings
-Author: Lagudi Domenico
-Version: 19.9
-*/
-
-/* 
-Copyright: WooCommerce Multiple Customer Addresses & Shippings uses the ACF PRO plugin. ACF PRO files are not to be used or distributed outside of the WooCommerce Multiple Customer Addresses plugin.
-*/
-
 define('WCMCA_PLUGIN_PATH', rtrim(plugin_dir_url(__FILE__), "/") )  ;
 define('WCMCA_PLUGIN_ABS_PATH', plugin_dir_path( __FILE__ ) );
 
