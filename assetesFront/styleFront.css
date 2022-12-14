@@ -38,3 +38,9 @@
 .optional{
 	display: none;
 }
+
+.jp-info-seg{
+	padding: 20px;
+	background-color: #ffe3e3;
+	margin-bottom: 30px;
+}

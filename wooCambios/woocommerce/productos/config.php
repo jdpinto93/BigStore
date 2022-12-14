@@ -40,5 +40,7 @@ include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/productDates/productDate
 // Elimina las imagenes de los productos cuando el mismo es eliminado
 include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/delete-product-images/wdpi.php');
 
+// Añade mensaje de pedido enviado a los usuarios en su cuenta
+include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/delivered/delivered.php');
 
 
