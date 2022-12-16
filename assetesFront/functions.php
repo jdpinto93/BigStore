@@ -10,7 +10,7 @@ function woo_remove_product_tabs( $tabs ) {
 
 		//unset( $tabs['description'] );      	// Remove the description tab
 		unset( $tabs['reviews'] ); 			// Remove the reviews tab
-		//unset( $tabs['additional_information'] );  	// Remove the additional information tab
+		unset( $tabs['additional_information'] );  	// Remove the additional information tab
     return $tabs;
 }
 
@@ -41,7 +41,7 @@ add_filter('woocommerce_gateway_icon', function ($contenido, $id) {
 /*************************************************************************************
  * Add a custom product data tab
  *
-
+ */
 add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
 function woo_new_product_tab( $tabs ) {
 	
@@ -49,84 +49,36 @@ function woo_new_product_tab( $tabs ) {
 	
 	$tabs['test_tab'] = array(
 		'title' 	=> __( 'Informacion Tecnica', 'woocommerce' ),
-		'priority' 	=> 10,
+		'priority' 	=> 20,
 		'callback' 	=> 'ficha_tecnica'
-	);		
+	);
 	$tabs['test_tab2'] = array(
 		'title' 	=> __( '¿Porque Comprar?', 'woocommerce' ),
-		'priority' 	=> 20,
-		'callback' 	=> 'porque_comprar_icecat'
+		'priority' 	=> 30,
+		'callback' 	=> '_porque_comprar'
 
 	);
-
+	
 		return $tabs;
 }
 
-
-//tabs de ficha tecnica
 function ficha_tecnica(){
-    require "/data/www/html/bigcom_com_mx/servicios/xentra/xentra-icecat2.php";
-	$icecat_json =$icecat;
-echo '<section class="">  <div style="width=100%;">';
-   if (isset($icecat_json->FeaturesGroups)) {
-     $FeaturesGroups=$icecat_json->FeaturesGroups;
-        foreach($FeaturesGroups as $k => $Featuresgroup){
-                   //-----------inicio table-------------//
-echo '<div class="bigcomdivficha">';
-    echo '<table class="bigcomtableficha">';
- 		if (isset($Featuresgroup->FeatureGroup->Name->Value)) { 
-			echo '<h3 class="bigcomnombreficha">'.$Featuresgroup->FeatureGroup->Name->Value.'</h3>';
-}
-	if (isset($Featuresgroup->Features)) {
-        $Features=$Featuresgroup->Features;
-             foreach($Features as $k => $Feature){
-                echo '<tr class="bigcomfichatr">
-                   <td style="width:50%">'.$Feature->Feature->Name->Value.' </td>
-                      <td style="width:50%">'.$Feature->PresentationValue.' </td>
-      			</tr>';
-			}  
-      }
-echo '</table>';
-	echo '</div>';
-      	  } 
-      }
-   echo '</div></section>';
-}
-add_shortcode('ficha_tecnica_icecad', 'ficha_tecnica');
+   
+	$fichaProductic = get_field('__ficha_product');
+	$pfgProductic = get_field('__document_products');
 
-//tabs de razones de compra
-function porque_comprar_icecat(){
-  require "/data/www/html/bigcom_com_mx/servicios/xentra/xentra-icecat2.php";
-  $icecat_json =$icecat;
+	echo '<h3>Documentos del Producto</h3>';
+	echo $pfgProductic;
+	echo '<h3>Informacion Tecnica</h3>';
+	echo $fichaProductic;
+	
+}
 
-echo '<div class="bigcomsectionReasonsToBuy" style="width=100%;display:block;">';
-	if (isset($icecat_json->ReasonsToBuy )) {
-		$ReasonsToBuy=$icecat_json->ReasonsToBuy;
-		echo '<h1 class="bigcomReasonsToBuy">Razones para comprar</h1>';
-		if(sizeof($ReasonsToBuy) > 0){
-		   }
-echo '<div class="bigcomdivfichaReasons">';
-echo '<table class="bigcomtableficha">';
-	foreach($ReasonsToBuy as $k => $Reasons){
-		if (isset($Reasons->Title)) { 
-echo '<tr class="bigcomfichatrt">
-		<td style="width:100%">'.$Reasons->Title.' </td>
-	</tr>';
-}
-	if (isset($Reasons->Value)) { 
-echo '<tr class="bigcomfichatrv">
-		<td style="width:100%">'.$Reasons->Value.' </td>
-  	</tr>';
-	}
-}
-	echo '</table>';
-		echo '</div>';
-	}
-  echo '</div>';
-}
-add_shortcode('razon_icecad', 'porque_comprar_icecat');
+function _porque_comprar(){
 
-************************************************************************************/
+	echo '<h3>Razones De Compra</h3>';
+
+}
 
 /*
  * Desvincular el email de nuevo pedido de los CRON
