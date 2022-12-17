@@ -76,7 +76,10 @@ function ficha_tecnica(){
 
 function _porque_comprar(){
 
-	echo '<h3>Razones De Compra</h3>';
+	$reazonToBuy = get_field('__reazon_to_buy_product');
+
+	echo '<h3>¿Porque Comprar?</h3>';
+	echo $reazonToBuy;
 
 }
 
