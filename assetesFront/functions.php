@@ -58,8 +58,13 @@ function woo_new_product_tab( $tabs ) {
 		'callback' 	=> '_porque_comprar'
 
 	);
-	
-		return $tabs;
+	    if(empty(get_field('__ficha_product'))){
+			unset( $tabs['test_tab'] );
+		}elseif(empty(get_field('__reazon_to_buy_product'))){
+			unset( $tabs['test_tab2'] );
+		}else{
+			return $tabs;
+		}
 }
 
 function ficha_tecnica(){
@@ -70,25 +75,18 @@ function ficha_tecnica(){
 		echo '<h2>Documentos del Producto</h2>';
 		echo $pfgProductic;	
 	}
-			if(!empty($fichaProductic)){
 		echo '<h2>Información Técnica </h2>';
 		echo $fichaProductic;
-	}else{
-		echo "<style>#tab-title-test_tab{ display:none !important; }</style>";
-			}
 }
 
 function _porque_comprar(){
 
 	$reazonToBuy = get_field('__reazon_to_buy_product');
-			if(!empty($reazonToBuy)){
+
 		echo '<h2>¿Porque Comprar?</h2>';
 		echo $reazonToBuy;
-	}else{
-		echo "<style>#tab-title-test_tab2{ display:none !important; }</style>";
-			}
-}
 
+}
 /*
  * Desvincular el email de nuevo pedido de los CRON
  */
