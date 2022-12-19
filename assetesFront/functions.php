@@ -66,21 +66,27 @@ function ficha_tecnica(){
    
 	$fichaProductic = get_field('__ficha_product');
 	$pfgProductic = get_field('__document_products');
-
-	echo '<h3>Documentos del Producto</h3>';
-	echo $pfgProductic;
-	echo '<h3>Informacion Tecnica</h3>';
-	echo $fichaProductic;
-	
+			if(!empty($pfgProductic)){
+		echo '<h2>Documentos del Producto</h2>';
+		echo $pfgProductic;	
+	}
+			if(!empty($fichaProductic)){
+		echo '<h2>Información Técnica </h2>';
+		echo $fichaProductic;
+	}else{
+				echo '<h3>Aun no hay Ficha Tecnica para este producto</h3>';
+			}
 }
 
 function _porque_comprar(){
 
 	$reazonToBuy = get_field('__reazon_to_buy_product');
-
-	echo '<h3>¿Porque Comprar?</h3>';
-	echo $reazonToBuy;
-
+			if(!empty($reazonToBuy)){
+		echo '<h2>¿Porque Comprar?</h2>';
+		echo $reazonToBuy;
+	}else{
+				echo '<h3>Aun no hay Razones de compra para este producto</h3>';
+			}
 }
 
 /*
