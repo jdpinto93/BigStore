@@ -74,7 +74,7 @@ function ficha_tecnica(){
 		echo '<h2>Información Técnica </h2>';
 		echo $fichaProductic;
 	}else{
-				echo '<h3>Aun no hay Ficha Tecnica para este producto</h3>';
+		echo "<style>#tab-title-test_tab{ display:none !important; }</style>";
 			}
 }
 
@@ -85,7 +85,7 @@ function _porque_comprar(){
 		echo '<h2>¿Porque Comprar?</h2>';
 		echo $reazonToBuy;
 	}else{
-				echo '<h3>Aun no hay Razones de compra para este producto</h3>';
+		echo "<style>#tab-title-test_tab2{ display:none !important; }</style>";
 			}
 }
 
