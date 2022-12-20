@@ -77,7 +77,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                           'description' => __( 'Maximum allowed weight', 'bigmx' ),
                           'default' => 100
                           ),
-                     );
+                    );
  
                 }
 
@@ -111,7 +111,7 @@ public function calculate_shipping( $package = array() ) {
     $total_weight = max( $weight, $volumetric_weight );
 
     // Calcula el coste del envío en función del peso
-    $cost = ceil( $total_weight / 5 ) * 100;
+    $cost = ceil( $total_weight / 5 ) * 99;
 
     // Establece el coste del envío
     $this->add_rate( array(
@@ -121,6 +121,7 @@ public function calculate_shipping( $package = array() ) {
     ) );
 }
             }
+        
         }
     }
  
@@ -173,6 +174,7 @@ public function calculate_shipping( $package = array() ) {
                       
                         }
                 }
+                
             }       
         } 
     }
