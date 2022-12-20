@@ -80,67 +80,46 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                      );
  
                 }
-                /**
-                 * This function is used to calculate the shipping cost. Within this function we can check for weights, dimensions and other parameters.
-                 *
-                 * @access public
-                 * @param mixed $package
-                 * @return void
-                 */
-                public function calculate_shipping( $package = array() ) {
 
-                    $weight = 0;
-                    $length = 0;
-                    $width = 0;
-                    $height = 0;
-                    $cost = 0;
-                    $country = $package["destination"]["country"];
+                // Función que calcula el peso volumétrico del pedido
+public function calculate_volumetric_weight( $package = array() ) {
+    // Calcula el peso volumétrico del pedido en función del volumen y la densidad
+    $volume = 0;
+    foreach ( $package['contents'] as $item_id => $values ) {
+        $_product = $values['data'];
+        $volume = $volume + $_product->get_width() * $_product->get_height() * $_product->get_length() * $values['quantity'];
+    }
+    $volumetric_weight = ceil( $volume / 5000 );
 
- 
-                    foreach ( $package['contents'] as $item_id => $values ) 
-                    { 
-                        $_product = $values['data']; 
-                        $weight = $weight + $_product->get_weight() * $values['quantity'];
-                        $length = $_product->get_length();
-                        $width = $_product->get_width();
-                        $height = $_product->get_height();
-                        $dimensions = $length*$width*$width*$values['quantity']/5000;
-                    }
+    return $volumetric_weight;
+}
 
-                $weight = wc_get_weight( $weight, 'kg' );
- 
-                    if( $dimensions <= $weight ) {
 
-                        $cost = $weight*20;
+// Función que calcula el coste del envío
+public function calculate_shipping( $package = array() ) {
+    // Obtiene el peso del pedido
+    $weight = 0;
+    foreach ( $package['contents'] as $item_id => $values ) {
+        $_product = $values['data'];
+        $weight = $weight + $_product->get_weight() * $values['quantity'];
+    }
 
-                    }else{
- 
-                        $cost = $dimensions;
- 
-                    }
- 
-                    $countryZones = array(
-                        'MX' => 0,
-                        );
- 
-                    $zonePrices = array(
-                        0 => 0,
-                        );
- 
-                    $zoneFromCountry = $countryZones[ $country ];
-                    $priceFromZone = $zonePrices[ $zoneFromCountry ];
- 
-                    $cost += $priceFromZone;
- 
-                    $rate = array(
-                        'id' => $this->id,
-                        'label' => $this->title,
-                        'cost' => $cost
-                    );
- 
-                    $this->add_rate( $rate );
-                    
-                }
+    // Obtiene el peso volumétrico del pedido
+    $volumetric_weight = $this->calculate_volumetric_weight( $package );
+
+    // Toma el peso más alto (peso real o peso volumétrico)
+    $total_weight = max( $weight, $volumetric_weight );
+
+    // Calcula el coste del envío en función del peso
+    $cost = ceil( $total_weight / 5 ) * 100;
+
+    // Establece el coste del envío
+    $this->add_rate( array(
+        'id' => $this->id,
+        'label' => $this->title,
+        'cost' => $cost,
+    ) );
+}
             }
         }
     }
