@@ -56,7 +56,7 @@ if( function_exists('acf_add_local_field_group') ):
                     'class' => '',
                     'id' => '',
                 ),
-                'default_value' => 100,
+                'default_value' => 60,
                 'placeholder' => '',
                 'prepend' => 'Kg',
                 'append' => '',
