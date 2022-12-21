@@ -14,3 +14,6 @@ function output_panel_bigcom() {
 // Crea el menu de opciones de Datos
 include(Woo_Big_RUTA.'/includes/panelBigcom/panelBigcom.php');
 }
+
+// Crea el menu de opciones para settins
+include(Woo_Big_RUTA.'/includes/panelBigcom/settings.php');

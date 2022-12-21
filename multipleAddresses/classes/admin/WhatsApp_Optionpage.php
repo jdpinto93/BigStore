@@ -13,7 +13,7 @@ class WhatsApp_OptionPage
 				'page_title' 	=> 'Ajustes de Mensajes deWhatsApp',
 				'menu_title'	=> 'Ajestes de WhatsApp',
 				'menu_slug' 	=> 'option-menu-whatsApp',
-				'capability'	=> 'edit_posts',
+				'capability'	=> 'manage_options',
 				'parent_slug'	=> 'options-general.php',
 				'update_button' => __('Actualizar Mensajes', 'acf'),
 				'redirect'		=> false

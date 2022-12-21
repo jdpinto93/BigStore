@@ -13,7 +13,7 @@ class WCMCA_OptionPage
 				'page_title' 	=> 'Ajustes a Campos de Varias direcciones para un cliente',
 				'menu_title'	=> 'Direcciones',
 				'menu_slug' 	=> 'wcmca-option-menu',
-				'capability'	=> 'edit_posts',
+				'capability'	=> 'manage_options',
 				'parent_slug'	=> 'options-general.php',
 				'update_button' => __('Guardar', 'acf'),
 				'redirect'		=> false

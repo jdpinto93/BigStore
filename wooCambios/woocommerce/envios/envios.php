@@ -104,6 +104,11 @@ public function calculate_shipping( $package = array() ) {
         $weight = $weight + $_product->get_weight() * $values['quantity'];
     }
 
+    if ( get_field('shipping_cost_field', 'option') ) : 
+        $costMx = get_field('shipping_cost_field', 'option');
+    endif;
+    
+
     // Obtiene el peso volumétrico del pedido
     $volumetric_weight = $this->calculate_volumetric_weight( $package );
 
@@ -111,7 +116,7 @@ public function calculate_shipping( $package = array() ) {
     $total_weight = max( $weight, $volumetric_weight );
 
     // Calcula el coste del envío en función del peso
-    $cost = ceil( $total_weight / 5 ) * 99;
+    $cost = ceil( $total_weight / 5 ) * $costMx;
 
     // Establece el coste del envío
     $this->add_rate( array(
@@ -151,7 +156,12 @@ public function calculate_shipping( $package = array() ) {
                 }
  
                 $BigExpress_Shipping_Method = new BigExpress_Shipping_Method();
-                $weightLimit = (int) $BigExpress_Shipping_Method->settings['weight'];
+                if ( get_field('_max_wehight', 'option') ) : 
+                    $weightLimit = get_field('_max_wehight', 'option');
+                endif;
+                if ( get_field('__message_max_wehight', 'option') ) : 
+                    $messageWeightLimit = get_field('__message_max_wehight', 'option');
+                endif;
                 $weight = 0;
  
                 foreach ( $package['contents'] as $item_id => $values ) 
@@ -164,7 +174,7 @@ public function calculate_shipping( $package = array() ) {
                 
                 if( $weight > $weightLimit ) {
  
-                        $message = sprintf( __( 'Disculpe, usted tiene en su carrito %d kg y excede la cantidad maxima de %d kg para %s lamentamos informarle que nuestra paqueteria no podra hacer un solo envio por lo que sugerimos que haga varios pedidos sin exceder el limite permitido', 'bigmx' ), $weight, $weightLimit, $BigExpress_Shipping_Method->title );
+                        $message = sprintf( __( "$messageWeightLimit", 'bigmx' ), $weight, $weightLimit, $BigExpress_Shipping_Method->title );
                              
                         $messageType = "error";
  
