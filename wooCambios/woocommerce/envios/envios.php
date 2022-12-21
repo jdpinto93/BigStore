@@ -70,13 +70,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                           'description' => __( 'Title to be display on site', 'bigmx' ),
                           'default' => __( 'BigExpress Shipping', 'bigmx' )
                           ),
- 
-                     'weight' => array(
-                        'title' => __( 'Weight (kg)', 'bigmx' ),
-                          'type' => 'number',
-                          'description' => __( 'Maximum allowed weight', 'bigmx' ),
-                          'default' => 100
-                          ),
                     );
  
                 }
