@@ -67,26 +67,92 @@ function woo_new_product_tab( $tabs ) {
 		}
 }
 
-function ficha_tecnica(){
-   
-	$fichaProductic = get_field('__ficha_product');
+function doc_product_pdf(){
+	
+    // only on the product page
+    if ( ! is_product() ) {
+        return;
+    }
+	
+    global $product;
+	
 	$pfgProductic = get_field('__document_products');
-			if(!empty($pfgProductic)){
+	
+	if(!empty($pfgProductic)){
 		echo '<h2>Documentos del Producto</h2>';
 		echo $pfgProductic;	
+	}else{
+		echo '<style>#elementor-tab-title-3462{display: none!important;}</style>';
+		echo '<style>#elementor-tab-content-3462{display: none!important;}</style>';
 	}
+}
+
+add_shortcode('pdf_product', 'doc_product_pdf');
+
+function ficha_tecnica( ){
+   
+    // only on the product page
+    if ( ! is_product() ) {
+        return;
+    }
+	
+    global $product;
+	
+	$fichaProductic = get_field('__ficha_product');
+
+	if(!empty($fichaProductic)){
 		echo '<h2>Información Técnica </h2>';
 		echo $fichaProductic;
+	}else{
+		echo '<style>#elementor-tab-title-3463{display: none!important;}</style>';
+		echo '<style>#elementor-tab-content-3463{display: none!important;}</style>';
+	}
 }
+add_shortcode('short_ficha_tecnica', 'ficha_tecnica');
 
 function _porque_comprar(){
 
+    // only on the product page
+    if ( ! is_product() ) {
+        return;
+    }
+	
+    global $product;
+	
 	$reazonToBuy = get_field('__reazon_to_buy_product');
-
+	
+	if(!empty($reazonToBuy)){
 		echo '<h2>¿Porque Comprar?</h2>';
 		echo $reazonToBuy;
-
+	}else{
+		echo '<style>#elementor-tab-title-3464{display: none!important;}</style>';
+		echo '<style>#elementor-tab-content-3464{display: none!important;}</style>';
+	}
 }
+
+add_shortcode( 'short_porque_comprar', '_porque_comprar' );
+
+function display_custom_product_description( $atts ){
+
+    // only on the product page
+    if ( ! is_product() ) {
+        return;
+    }
+
+    $atts = shortcode_atts( array(
+        'id' => get_the_id(),
+    ), $atts, 'custom_product_description' );
+
+    global $product;
+
+    if ( ! is_a( $product, 'WC_Product') )
+        $product = wc_get_product($atts['id']);
+
+    return $product->get_description();
+}
+
+add_shortcode( 'description_product_data', 'display_custom_product_description' );
+
 /*
  * Desvincular el email de nuevo pedido de los CRON
  */

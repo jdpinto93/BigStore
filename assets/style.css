@@ -1,11 +1,9 @@
 .contenTarjetas{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: space-around;
-    justify-content: space-around;
-    align-items: center;
-}
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin: auto;
+    column-gap: 10px;
+  }
 
 #toplevel_page_side-cart-woocommerce-settings{
     display: none;
@@ -16,19 +14,15 @@
 }
 
 .tarjetasAdmin{
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 5px;
-    border-radius: 5%;
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: space-between;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    padding: 25px;
+background-color: #ffffff;
+padding: 20px;
+border-radius: 5%;
+width: 300px;
+display: grid;
+grid-template-columns: 1fr;
+margin: 20px;
+justify-items: center;
+
 }
 
 .titleAdmin{

@@ -21,52 +21,71 @@ defined('ABSPATH') or die( "Bye bye" );
 define('Woo_Big_RUTA',plugin_dir_path(__FILE__));
 define( 'Woo_Big_URL', plugin_dir_url( __FILE__ ) );
 
-// Archivos Externos
+// Inicia Modulos de Bigcom
 
-//Crea un metodo de envios para Woocommerce
+add_action('init', 'add_module_bigcom');
+function add_module_bigcom(){
+
+    if ( get_field( '_check__whatsapp', 'option' ) == 1 ) :
+        //Crea Pagina de Opciones de WhatsApp
+        require(Woo_Big_RUTA . '/includes/panelBigcom/optionsWhatsApp.php');
+        // Agrega Boton para mensaje al WhatsApp desde las Ordenes de Woocommerce
+        require(Woo_Big_RUTA.'/WooWhatsApp/wc-whatsapp.php');
+    endif;
+
+    if ( get_field( '_check__merchant_id', 'option' ) == 1 ) :
+// Agrega apartado para añadir el codigo de google reviews para valoraciones de clientes por emails
+        require(Woo_Big_RUTA.'/GoogleReviews/google-customer-reviews.php');
+    endif;
+
+    if ( get_field( '_check__flies_upload', 'option' ) == 1 ) :
+        // Permite Añadir un boton para subir el comprobante de pago al finalizar la compra o en mi cuenta
+        require(Woo_Big_RUTA.'/files-upload/files-upload.php');
+    endif;
+
+    if ( get_field( '_check__bac_duplicator', 'option' ) == 1 ) :
+        // Permite duplicar la funcionalidad de pago por transferencia bancaria en woocommerce
+        require(Woo_Big_RUTA.'/multi-bank-transfer/bank-transfer.php');
+    endif;
+
+    if ( get_field( '_check__personalizador', 'option' ) == 1 ) :
+        // Crea un menu para controlar el texto de los botones de woocommerce
+        require(Woo_Big_RUTA.'/EdidTextWoo/EdidTextWoo.php');
+    endif;
+
+}
+
+// Incluye Archivos Externos
+
+// Permite a los usuarios Agregar Varias direcciones al momento de Pagar
 include(Woo_Big_RUTA.'/multipleAddresses/multipleAddresses.php');
 
-//Crea un metodo de envios para Woocommerce
+//Crea un metodo de envios para Woocommerce BigExpress
 include(Woo_Big_RUTA.'/wooCambios/woocommerce/envios/envios.php');
 
-//Crea campos para los productos de woocommerce
+// Crea un menu para controlar el texto de los botones de woocommerce
+include(Woo_Big_RUTA.'/email-template-customizer/email-template-customizer.php');
+
+// Agrega la funcionalidad para modificar el formulario de pago de woocommerce
+include(Woo_Big_RUTA.'/field-editor/field-editor.php');
+
+// Agrega el carrito laterañ de woocommerce en el frontend
+include(Woo_Big_RUTA.'/side-cart/cart-main.php');
+
+//Crea campos y ajustes para los productos de woocommerce
 include(Woo_Big_RUTA.'/wooCambios/woocommerce/productos/config.php');
 
 // Configuracion de correos en el area de pedidos
 include(Woo_Big_RUTA.'/wooCambios/woocommerce/emails/emails-config-woo.php');
 
-// Agrega Boton para mensaje al WhatsApp desde las Ordenes de Woocommerce
-include(Woo_Big_RUTA.'/WooWhatsApp/wc-whatsapp.php');
-
-// Agrega apartado para añadir el codigo de google reviews para valoraciones de clientes por emails
-include(Woo_Big_RUTA.'/GoogleReviews/google-customer-reviews.php');
-
-// Agrega la ventana modal del carrito de woocommerce en el frontend
-include(Woo_Big_RUTA.'/side-cart/cart-main.php');
-
-// Crea el menu de opciones
+// Crea el menu de opciones para el panel de administracion de Bigcom
 include(Woo_Big_RUTA.'/includes/adminMenu.php');
 
 // Crea un menu para controlar el estatus de las ordenes de pedido
 include(Woo_Big_RUTA.'/order-status-manager/woocommerce-order-status-manager.php');
 
-// Crea un menu para controlar el texto de los botones de woocommerce
-include(Woo_Big_RUTA.'/EdidTextWoo/EdidTextWoo.php');
-
-// Crea un menu para controlar el texto de los botones de woocommerce
-include(Woo_Big_RUTA.'/email-template-customizer/email-template-customizer.php');
-
 // Editar el PHP De bigcom desde el Plugin de estructura
 include(Woo_Big_RUTA.'/assetesFront/functions.php');
-
-// Agrega la funcionalidad para modificar el formulario de pago de woocommerce
-include(Woo_Big_RUTA.'/field-editor/field-editor.php');
-
-// Permite duplicar la funcionalidad de pago por transferencia bancaria en woocommerce
-include(Woo_Big_RUTA.'/multi-bank-transfer/bank-transfer.php');
-
-// Permite Añadir un boton para subir el comprobante de pago al finalizar la compra o en mi cuenta
-include(Woo_Big_RUTA.'/files-upload/files-upload.php');
 
 
 //  Enqueue Scripts and Styles

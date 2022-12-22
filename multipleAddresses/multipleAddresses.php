@@ -147,11 +147,6 @@ function wcmca_setup()
 		require_once('classes/admin/WCMCA_OptionPage.php');
 		$wcmca_option_page = new WCMCA_OptionPage();
 	}
-	if(!class_exists('WhatsApp_OptionPage'))
-	{
-		require_once('classes/admin/WhatsApp_Optionpage.php');
-		$whatsapp_option_page = new WhatsApp_OptionPage;
-	}
 	if(!class_exists('WCMCA_UserProfilePage'))
 	{
 		require_once('classes/admin/WCMCA_UserProfilePage.php');
