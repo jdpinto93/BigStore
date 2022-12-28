@@ -1,18 +1,4 @@
 <?php
- /**
- * Plugin Name:       EdidTextWoo
- * Plugin URI:        http://www.webmasteryagency.com
- * Description:       Edita los los textos de los botones de woocommerce
- * Version:           1.1.3
- * Requires at least: 5.2
- * Requires PHP:      7.2.2
- * Author:            Jose Pinto
- * Author URI:        http://www.webmasteryagency.com
- * License:           GPL v3 or later
- * Domain Path: /lang
- * Text Domain _JPinto
- */
-
 defined( 'ABSPATH' ) or exit;
 
 // Check if WooCommerce is active

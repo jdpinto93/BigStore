@@ -1,4 +1,6 @@
 <?php
+//Evita que un usuario malintencionado ejecute codigo php desde la barra del navegador
+defined('ABSPATH') or die( "Bye bye" );
 
 /*
  * Remove product data tabs

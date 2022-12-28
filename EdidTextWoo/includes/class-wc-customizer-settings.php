@@ -1,18 +1,4 @@
 <?php
- /**
- * Plugin Name:       Field Editor
- * Plugin URI:        http://www.webmasteryagency.com
- * Description:       Edita los campos del formulario de woocommerce, importa y exporta los ajustes para que sea facil la mugracion o reemplazar ajustes
- * Version:           1.1.3
- * Requires at least: 5.2
- * Requires PHP:      7.2.2
- * Author:            Jose Pinto
- * Author URI:        http://www.webmasteryagency.com
- * License:           GPL v3 or later
- * Domain Path: /lang
- * Text Domain _JPinto
- */
-
 defined( 'ABSPATH' ) or exit;
 
 /**
