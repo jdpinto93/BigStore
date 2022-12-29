@@ -44,3 +44,45 @@
 	background-color: #ffe3e3;
 	margin-bottom: 30px;
 }
+
+.content_producto__descripcion {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	margin: auto;
+	column-gap: 4%;
+  }
+  
+  .content_producto__descripcion2 {
+	display: grid;
+	grid-template-columns: 1fr;
+	margin: 35px;
+  }
+  
+  .content_producto__descripcion .content_producto__descripcion-titulo {
+	background-color: red;
+	height: 35px;
+	color: white;
+	text-align: center;
+	display: grid;
+	align-items: center;
+  }
+  
+  .content_producto__descripcion .content_producto__descripcion-items {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	  border: #d4dbe1 1px solid;
+	padding: 5px;
+  }
+  
+  .elementor-tab-title{
+	border: 3px solid;
+	border-color: red;
+	border-radius: 15px;
+	  width: 80%!important;
+	  margin: 15px auto!important;
+  }
+  
+  .elementor-tab-content{
+	  width: 80%!important;
+	  margin: 15px auto!important;
+  }
