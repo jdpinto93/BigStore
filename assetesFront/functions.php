@@ -84,12 +84,56 @@ function doc_product_pdf(){
 		echo '<h2>Documentos del Producto</h2>';
 		echo $pfgProductic;	
 	}else{
-		echo '<style>#elementor-tab-title-3462{display: none!important;}</style>';
-		echo '<style>#elementor-tab-content-3462{display: none!important;}</style>';
+		echo '<style>#elementor-tab-title-2224{display: none!important;}</style>';
+		echo '<style>#elementor-tab-content-2224{display: none!important;}</style>';
 	}
 }
 
-add_shortcode('pdf_product', 'doc_product_pdf');
+add_shortcode('short_pdf_product', 'doc_product_pdf');
+
+function doc_product_video(){
+	
+    // only on the product page
+    if ( ! is_product() ) {
+        return;
+    }
+	
+    global $product;
+	
+	$videoProductic = get_field('__videos_product');
+	
+	if(!empty($videoProductic)){
+		echo '<h2>Videos del Producto</h2>';
+		echo $videoProductic;	
+	}else{
+		echo '<style>#elementor-tab-title-2225{display: none!important;}</style>';
+		echo '<style>#elementor-tab-content-2225{display: none!important;}</style>';
+	}
+}
+
+add_shortcode('short_video_product', 'doc_product_video');
+
+function doc_reviews_ic(){
+	
+    // only on the product page
+    if ( ! is_product() ) {
+        return;
+    }
+	
+    global $product;
+	
+	$reviewsProductic = get_field('__reviews_product');
+	
+	if(!empty($reviewsProductic)){
+		echo '<h2>Opiniones del Producto</h2>';
+		echo $reviewsProductic;	
+	}else{
+		echo '<style>#elementor-tab-title-2226{display: none!important;}</style>';
+		echo '<style>#elementor-tab-content-2226{display: none!important;}</style>';
+	}
+}
+
+add_shortcode('short_reviews_product', 'doc_reviews_ic');
 
 function ficha_tecnica( ){
    
@@ -103,11 +147,11 @@ function ficha_tecnica( ){
 	$fichaProductic = get_field('__ficha_product');
 
 	if(!empty($fichaProductic)){
-		echo '<h2>Información Técnica </h2>';
+		echo '<h2>Información Técnica</h2>';
 		echo $fichaProductic;
 	}else{
-		echo '<style>#elementor-tab-title-3463{display: none!important;}</style>';
-		echo '<style>#elementor-tab-content-3463{display: none!important;}</style>';
+		echo '<style>#elementor-tab-title-2222{display: none!important;}</style>';
+		echo '<style>#elementor-tab-content-2222{display: none!important;}</style>';
 	}
 }
 add_shortcode('short_ficha_tecnica', 'ficha_tecnica');
@@ -127,8 +171,8 @@ function _porque_comprar(){
 		echo '<h2>¿Porque Comprar?</h2>';
 		echo $reazonToBuy;
 	}else{
-		echo '<style>#elementor-tab-title-3464{display: none!important;}</style>';
-		echo '<style>#elementor-tab-content-3464{display: none!important;}</style>';
+		echo '<style>#elementor-tab-title-2223{display: none!important;}</style>';
+		echo '<style>#elementor-tab-content-2223{display: none!important;}</style>';
 	}
 }
 

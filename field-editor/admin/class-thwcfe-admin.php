@@ -79,7 +79,7 @@ class THWCFE_Admin {
 	
 	public function admin_menu() {
 		$capability = THWCFE_Utils::wcfe_capability();
-		$this->screen_id = add_options_page(THWCFE_i18n::t('WooCommerce Checkout Field Editor Pro'), THWCFE_i18n::t('Checkout Form'), $capability, 'th_checkout_field_editor_pro', array($this, 'output_settings'));
+		$this->screen_id = add_submenu_page('woocommerce', THWCFE_i18n::t('WooCommerce Checkout Field Editor Pro'), THWCFE_i18n::t('Edit Formulario'), $capability, 'th_checkout_field_editor_pro', array($this, 'output_settings'));
 	}
 	
 	public function add_screen_id($ids){
@@ -96,12 +96,12 @@ class THWCFE_Admin {
 	
 	public function plugin_row_meta( $links, $file ) {
 		if(THWCFE_BASE_NAME == $file) {
-			$doc_link = esc_url('#');
-			$support_link = esc_url('#');
+			$doc_link = esc_url('https://www.webmasteryagency.com/');
+			$support_link = esc_url('https://www.webmasteryagency.com/');
 				
 			$row_meta = array(
 				'docs' => '<a href="'.$doc_link.'">'.THWCFE_i18n::esc_html__t('Documentacion').'</a>',
-				'support' => '',
+				'support' => '<a href="'.$support_link.'">'.THWCFE_i18n::esc_html__t('Soporte').'</a>',
 			);
 
 			return array_merge( $links, $row_meta );

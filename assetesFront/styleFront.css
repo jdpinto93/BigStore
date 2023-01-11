@@ -4,7 +4,7 @@
 
 .jet-woo-builder-archive-product-title{
 	display: block;
-	height: 60px;
+	height: 50px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	margin-top: 10px;
@@ -50,39 +50,75 @@
 	grid-template-columns: repeat(2,1fr);
 	margin: auto;
 	column-gap: 4%;
-  }
+}
   
-  .content_producto__descripcion2 {
+.content_producto__descripcion2 {
 	display: grid;
 	grid-template-columns: 1fr;
 	margin: 35px;
-  }
+}
   
-  .content_producto__descripcion .content_producto__descripcion-titulo {
+.content_producto__descripcion .content_producto__descripcion-titulo {
 	background-color: red;
 	height: 35px;
 	color: white;
 	text-align: center;
 	display: grid;
 	align-items: center;
-  }
+}
   
-  .content_producto__descripcion .content_producto__descripcion-items {
+.content_producto__descripcion .content_producto__descripcion-items {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	  border: #d4dbe1 1px solid;
 	padding: 5px;
-  }
+}
   
-  .elementor-tab-title{
+.elementor-tab-title{
 	border: 3px solid;
 	border-color: red;
 	border-radius: 15px;
 	  width: 80%!important;
 	  margin: 15px auto!important;
-  }
+}
   
-  .elementor-tab-content{
+.elementor-tab-content{
 	  width: 80%!important;
 	  margin: 15px auto!important;
-  }
+}
+
+.features_logos-product{
+	float: left;
+	margin-right: 3px;
+}
+
+.atach-product{
+	float: left;
+	margin-right: 7px;
+}
+
+.bigcom-section{
+	border-bottom: 2px solid;
+  border-bottom-color: currentcolor;
+	padding-bottom: 25px;
+	border-color: gainsboro;
+}
+
+.group-ficha{
+	color: red;
+	font-size: 25px;
+	margin: 15px;
+	font-weight: 500;
+}
+
+.rtb_wrapper{
+	display: flex;
+	column-gap: 2%;
+}
+
+.feature_logos{
+	display: flex;
+	column-gap: 5px;
+	width: 50px;
+	margin: 5px 0;
+}
